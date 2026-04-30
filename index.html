@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>D Studio | Premium Workspace</title>
+    <title>D Studio | Professional Workspace</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
     <style>
@@ -26,40 +26,73 @@
             color: var(--text-primary);
         }
 
+        /* NEW HEADER DESIGN */
         nav {
-            padding: 15px;
-            text-align: center;
-            background: rgba(3, 7, 18, 0.9);
-            backdrop-filter: blur(12px);
+            padding: 15px 20px;
+            background: rgba(3, 7, 18, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 2px solid var(--accent); /* Bottom Line Only */
         }
 
-        .logo-container {
-            display: inline-flex;
+        .nav-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 15px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--accent);
         }
 
         .logo-text { 
-            font-family: 'Space Grotesk', sans-serif; 
-            font-size: 26px; 
-            font-weight: 700; 
+            font-family: 'Bricolage Grotesk', sans-serif; 
+            font-size: 24px; 
+            font-weight: 800; 
             color: var(--accent); 
             letter-spacing: -1px;
+            text-transform: uppercase;
         }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
 
         .container { max-width: 500px; margin: 30px auto; padding: 0 20px; }
 
         .tool-card {
             background: var(--card);
-            border-radius: 28px;
+            border-radius: 25px;
             padding: 25px;
             border: 1px solid var(--border);
             margin-bottom: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
         .tool-group label { 
@@ -68,8 +101,7 @@
             font-weight: 900; 
             color: var(--accent); 
             text-transform: uppercase; 
-            margin-bottom: 12px; 
-            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 15px; 
         }
 
         input, select {
@@ -81,6 +113,7 @@
             color: white;
             margin-bottom: 12px;
             box-sizing: border-box;
+            font-family: inherit;
         }
 
         button {
@@ -91,43 +124,59 @@
             border: none;
             border-radius: 12px;
             font-weight: 800;
-            font-size: 15px;
             cursor: pointer;
             text-transform: uppercase;
         }
 
-        .whatsapp-btn {
-            background: var(--whatsapp);
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px;
-            border-radius: 12px;
+        /* FOOTER SECTIONS */
+        footer { 
+            background: #000; 
+            padding: 40px 20px; 
+            border-top: 1px solid var(--border); 
+            margin-top: 50px;
+        }
+
+        .footer-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            text-align: left;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .footer-title {
+            color: var(--text-primary);
+            font-weight: 800;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 11px;
+            color: #475569;
             font-weight: 700;
-            margin-top: 10px;
         }
-
-        .photo-entry {
-            background: rgba(255,255,255,0.02);
-            padding: 15px;
-            border-radius: 18px;
-            margin-bottom: 15px;
-            border: 1px dashed var(--border);
-        }
-
-        footer { background: #000; padding: 30px; text-align: center; border-top: 1px solid var(--border); margin-top: 40px; }
-        .copyright { color: #475569; font-size: 11px; font-weight: 700; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-container">
-            <img src="IMG_6145.jpeg" alt="Logo" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent);">
-            <div class="logo-text">D STUDIO</div>
+        <div class="nav-wrapper">
+            <div class="logo-section">
+                <img src="IMG_6145.jpeg" alt="Logo" class="logo-img">
+                <div class="logo-text">D STUDIO</div>
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Links</a>
+                <a href="https://wa.me/918521694137">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -142,9 +191,18 @@
 
         <div class="tool-card">
             <div class="tool-group">
-                <label>🖼️ Print Sheet Maker</label>
+                <label>⚖️ Image Resize (KB)</label>
+                <input type="file" id="kbInput" accept="image/*">
+                <input type="number" id="targetKB" placeholder="Target KB Size">
+                <button onclick="resizeKB()">Resize Image</button>
+            </div>
+        </div>
+
+        <div class="tool-card">
+            <div class="tool-group">
+                <label>🖼️ Multi-Print Sheet</label>
                 <div id="photoContainer">
-                    <div class="photo-entry">
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 15px; margin-bottom: 12px; border: 1px dashed var(--border);">
                         <input type="file" class="p-input" accept="image/*">
                         <select class="p-size">
                             <option value="passport">Passport Size</option>
@@ -154,20 +212,23 @@
                         <input type="number" class="p-qty" value="12">
                     </div>
                 </div>
-                <button style="background:transparent; border:1px solid var(--accent); color:var(--accent); margin-bottom:10px;" onclick="addPhotoSlot()">+ Add More Photo</button>
-                <button onclick="generateMultiPrint()">Create A4 Sheet</button>
+                <button style="background:transparent; border:1px solid var(--accent); color:var(--accent); margin-bottom:10px; font-size:12px;" onclick="addPhotoSlot()">+ Add Another Person</button>
+                <button onclick="generateMultiPrint()">Generate Sheet</button>
             </div>
-        </div>
-
-        <div class="tool-card" style="text-align: center;">
-            <label>Help & Support</label>
-            <a href="https://wa.me/918521694137?text=Hello%20D%20Studio,%20I%20need%20help." class="whatsapp-btn">
-                <span>💬 WhatsApp: 8521694137</span>
-            </a>
         </div>
     </div>
 
     <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-title">Disclaimer</div>
+                D Studio provides local browser-based tools. We do not store or see your images. Usage is at user's own risk regarding file accuracy.
+            </div>
+            <div>
+                <div class="footer-title">T&C</div>
+                All services are provided "as is". By using this workspace, you agree that processing results depend on your device performance.
+            </div>
+        </div>
         <div class="copyright">© 2026 D STUDIO • AMIT DAS</div>
     </footer>
 
@@ -180,7 +241,7 @@
 
     function addPhotoSlot() {
         const div = document.createElement('div');
-        div.className = 'photo-entry';
+        div.style = "background: rgba(255,255,255,0.02); padding: 15px; border-radius: 15px; margin-bottom: 12px; border: 1px dashed var(--border);";
         div.innerHTML = `<input type="file" class="p-input" accept="image/*"><select class="p-size"><option value="passport">Passport</option><option value="aadhar">Aadhar</option><option value="stamp">Stamp</option></select><input type="number" class="p-qty" value="4">`;
         document.getElementById('photoContainer').appendChild(div);
     }
@@ -198,12 +259,31 @@
         doc.save("D_Studio_Doc.pdf");
     }
 
+    async function resizeKB() {
+        const file = document.getElementById('kbInput').files[0], target = parseInt(document.getElementById('targetKB').value);
+        if (!file || !target) return alert("Fill details!");
+        const img = new Image(); img.src = await readFile(file);
+        img.onload = function() {
+            let canvas = document.createElement('canvas'), ctx = canvas.getContext('2d'), scale = 1.0, finalData = "";
+            for (let i = 0; i < 6; i++) {
+                canvas.width = img.width * scale; canvas.height = img.height * scale;
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                for (let q = 0.98; q > 0.1; q -= 0.05) {
+                    finalData = canvas.toDataURL("image/jpeg", q);
+                    if ((finalData.length * 3 / 4 / 1024) <= target) break;
+                }
+                if ((finalData.length * 3 / 4 / 1024) < target * 0.85) scale += 0.4; else break;
+            }
+            const link = document.createElement('a'); link.href = finalData; link.download = `D_Studio_${target}KB.jpg`; link.click();
+        };
+    }
+
     async function generateMultiPrint() {
         const slots = document.querySelectorAll('.photo-entry'), canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
         canvas.width = 2480; canvas.height = 3508; ctx.fillStyle = "white"; ctx.fillRect(0, 0, canvas.width, canvas.height);
         let curX = 120, curY = 120, gap = 50, margin = 120;
-        for (const slot of slots) {
-            const file = slot.querySelector('.p-input').files[0], sizeType = slot.querySelector('.p-size').value, qty = parseInt(slot.querySelector('.p-qty').value) || 0;
+        for (const slot of document.querySelectorAll('.p-input')) {
+            const parent = slot.parentElement, file = slot.files[0], sizeType = parent.querySelector('.p-size').value, qty = parseInt(parent.querySelector('.p-qty').value) || 0;
             if (!file) continue;
             const img = new Image(); img.src = await readFile(file);
             await new Promise(r => img.onload = r);
