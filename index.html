@@ -1,214 +1,115 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DasDigital Studio | All-in-One Tools</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Dark Dashboard</title>
     <style>
-        /* STABLE BACKGROUND */
+        /* Base Styles */
         body {
+            background-color: #0f172a; /* Deep Navy Black */
+            color: #f8fafc; /* Soft White */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1493397212122-2b85def82820?auto=format&fit=crop&w=1920');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
         }
 
-        .container {
-            width: 90%;
-            max-width: 500px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        h2 { text-align: center; color: #00d2ff; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
-        
-        .tool-card {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border-left: 4px solid #00d2ff;
-        }
-
-        label { display: block; margin-bottom: 10px; font-size: 14px; color: #ccc; }
-
-        input {
+        /* Navigation Bar */
+        nav {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border: none;
-            background: rgba(255,255,255,0.9);
-            color: #333;
-            box-sizing: border-box;
+            padding: 20px 0;
+            background: #1e293b;
+            text-align: center;
+            border-bottom: 2px solid #38bdf8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
-        button {
-            width: 100%;
-            padding: 14px;
-            background: #00d2ff;
-            border: none;
-            color: white;
+        nav a {
+            color: #38bdf8;
+            text-decoration: none;
+            margin: 0 20px;
             font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Container Section */
+        .container {
+            max-width: 900px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* Feature Card Section */
+        .card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #38bdf8;
+        }
+
+        /* Neon Action Button */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 12px 25px;
             border-radius: 8px;
-            cursor: pointer;
-            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
             transition: 0.3s;
         }
 
-        button:hover { background: #0096c7; transform: translateY(-2px); }
-        .preview-box { width: 80px; height: 100px; object-fit: cover; display: none; margin: 10px auto; border: 2px solid #00d2ff; border-radius: 5px; }
+        .btn:hover {
+            background-color: #0ea5e9;
+            box-shadow: 0 0 15px #38bdf8;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>DasDigital Studio</h2>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Projects</a>
+        <a href="#">Services</a>
+    </nav>
 
-    <div class="tool-card">
-        <label>📄 Image to PDF Converter</label>
-        <input type="file" id="pdfInput" accept="image/*" multiple>
-        <button onclick="convertToPDF()">Download PDF</button>
+    <div class="container">
+        <h1>Welcome to My Workspace</h1>
+        <p class="subtitle">Clean, Fast, and Secure Design</p>
+
+        <div class="card">
+            <h2>Project Status</h2>
+            <p>Aapka naya theme ab active hai. Ye design dark environment mein kaam karne ke liye best hai aur aankhon par zor nahi dalta.</p>
+            <a href="#" class="btn">Explore More</a>
+        </div>
     </div>
-
-    <div class="tool-card">
-        <label>⚖️ KB Resizer (Exact Size)</label>
-        <input type="file" id="kbInput" accept="image/*">
-        <input type="number" id="targetKB" placeholder="Target KB (e.g. 150)">
-        <button onclick="resizeKB()">Resize & Download</button>
-    </div>
-
-    <div class="tool-card">
-        <label>🖼️ Passport Photo Maker (A4)</label>
-        <input type="file" id="passInput" accept="image/*" onchange="showPreview(this)">
-        <img id="passPreview" class="preview-box">
-        <input type="number" id="photoQty" value="12" placeholder="Quantity (Max 40)">
-        <button onclick="generatePassport()">Download A4 Sheet</button>
-    </div>
-</div>
-
-<script>
-    const readFile = (file) => new Promise(res => {
-        const reader = new FileReader();
-        reader.onload = (e) => res(e.target.result);
-        reader.readAsDataURL(file);
-    });
-
-    function showPreview(input) {
-        const prev = document.getElementById('passPreview');
-        if (input.files[0]) {
-            prev.src = URL.createObjectURL(input.files[0]);
-            prev.style.display = 'block';
-        }
-    }
-
-    // --- 1. PDF LOGIC ---
-    async function convertToPDF() {
-        const files = document.getElementById('pdfInput').files;
-        if (files.length === 0) return alert("Pehle images select karein!");
-        
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-
-        for (let i = 0; i < files.length; i++) {
-            const imgData = await readFile(files[i]);
-            if (i > 0) doc.addPage();
-            doc.addImage(imgData, 'JPEG', 10, 10, 190, 277);
-        }
-        doc.save("DasDigital_Document.pdf");
-    }
-
-    // --- 2. KB RESIZER LOGIC ---
-    async function resizeKB() {
-        const file = document.getElementById('kbInput').files[0];
-        const target = parseInt(document.getElementById('targetKB').value);
-        if (!file || !target) return alert("Photo aur KB bhariye!");
-
-        const img = new Image();
-        img.src = await readFile(file);
-
-        img.onload = function() {
-            let canvas = document.createElement('canvas');
-            let ctx = canvas.getContext('2d');
-            let scale = 1.0;
-            let finalData = "";
-
-            for (let i = 0; i < 6; i++) {
-                canvas.width = img.width * scale;
-                canvas.height = img.height * scale;
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                
-                for (let q = 0.98; q > 0.1; q -= 0.05) {
-                    finalData = canvas.toDataURL("image/jpeg", q);
-                    let curSize = (finalData.length * 3) / 4 / 1024;
-                    if (curSize <= target && curSize > target * 0.92) break;
-                }
-                let sizeNow = (finalData.length * 3) / 4 / 1024;
-                if (sizeNow < target * 0.88) scale += 0.4; else break;
-            }
-            triggerDownload(finalData, `DasDigital_${target}KB.jpg`);
-        };
-    }
-
-    // --- 3. PASSPORT LOGIC ---
-    async function generatePassport() {
-        const file = document.getElementById('passInput').files[0];
-        const qty = parseInt(document.getElementById('photoQty').value) || 12;
-        if (!file) return alert("Photo select karein!");
-
-        const img = new Image();
-        img.src = await readFile(file);
-        
-        img.onload = function() {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = 2480; canvas.height = 3508; // A4
-            ctx.fillStyle = "white";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            const pW = 413, pH = 531, gap = 40, margin = 120;
-            let x = margin, y = margin;
-
-            for (let i = 0; i < qty; i++) {
-                ctx.drawImage(img, x, y, pW, pH);
-                // Border
-                ctx.strokeStyle = "#ccc";
-                ctx.strokeRect(x, y, pW, pH);
-
-                x += pW + gap;
-                if (x + pW > canvas.width - margin) {
-                    x = margin;
-                    y += pH + gap;
-                }
-            }
-            triggerDownload(canvas.toDataURL("image/jpeg", 0.9), "DasDigital_Passport.jpg");
-        };
-    }
-
-    function triggerDownload(url, name) {
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = name;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-</script>
 
 </body>
 </html>
