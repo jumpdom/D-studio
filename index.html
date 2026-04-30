@@ -20,14 +20,12 @@
 
         body {
             margin: 0;
-            padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
             color: var(--text-primary);
             line-height: 1.6;
         }
 
-        /* NAVIGATION */
         nav {
             padding: 20px;
             display: flex;
@@ -50,28 +48,23 @@
         }
 
         .nav-links { display: flex; gap: 20px; }
-        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600; }
 
-        /* HERO SECTION */
         .hero {
             text-align: center;
-            padding: 60px 20px;
+            padding: 50px 20px;
             background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
         }
 
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 42px;
+            font-size: 38px;
             margin: 0;
             background: linear-gradient(to right, #fff, var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p { color: var(--text-secondary); margin-top: 10px; font-size: 16px; }
-
-        /* MAIN TOOLS */
         .container {
             max-width: 500px;
             margin: 0 auto 60px;
@@ -81,13 +74,14 @@
         .tool-card {
             background: var(--card);
             border-radius: 24px;
-            padding: 30px;
+            padding: 25px;
             border: 1px solid var(--border);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .tool-group { margin-bottom: 30px; }
-        .tool-group label { display: block; font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px; }
+        .tool-group { margin-bottom: 25px; }
+        .tool-group label { display: block; font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
 
         input {
             width: 100%;
@@ -96,14 +90,14 @@
             border: 1px solid #374151;
             border-radius: 12px;
             color: white;
-            margin-bottom: 15px;
-            font-family: inherit;
+            margin-bottom: 12px;
             box-sizing: border-box;
+            font-family: inherit;
         }
 
         button {
             width: 100%;
-            padding: 16px;
+            padding: 15px;
             background: var(--accent);
             color: #030712;
             border: none;
@@ -111,12 +105,11 @@
             font-weight: 700;
             font-size: 15px;
             cursor: pointer;
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: 0.3s;
         }
 
-        button:hover { transform: translateY(-2px); opacity: 0.9; box-shadow: 0 10px 20px -10px var(--accent); }
+        button:hover { transform: translateY(-2px); box-shadow: 0 8px 15px -5px var(--accent); }
 
-        /* FOOTER / LEGAL */
         footer {
             background: #000;
             padding: 40px 20px;
@@ -128,14 +121,14 @@
             max-width: 800px;
             margin: 0 auto;
             text-align: left;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-secondary);
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
 
-        .legal-title { color: var(--text-primary); font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+        .legal-title { color: var(--text-primary); font-weight: 700; margin-bottom: 5px; font-size: 13px; }
 
         .copyright { margin-top: 30px; color: #475569; font-size: 11px; }
 
@@ -154,25 +147,35 @@
     </nav>
 
     <div class="hero">
-        <h1>Advanced Workspace</h1>
-        <p>Premium Digital Solution by Amit Das</p>
+        <h1>Digital Workspace</h1>
+        <p>Premium Tools by Amit Das</p>
     </div>
 
     <div class="container">
         <div class="tool-card">
             <div class="tool-group">
+                <label>📄 Image to PDF Converter</label>
+                <input type="file" id="pdfInput" accept="image/*" multiple>
+                <button onclick="convertToPDF()">Export to PDF</button>
+            </div>
+        </div>
+
+        <div class="tool-card">
+            <div class="tool-group">
                 <label>⚖️ Exact KB Resizer</label>
                 <input type="file" id="kbInput" accept="image/*">
                 <input type="number" id="targetKB" placeholder="Target Size (e.g., 150 KB)">
-                <button onclick="resizeKB()">Optimize Image</button>
+                <button onclick="resizeKB()">Optimize Size</button>
             </div>
+        </div>
 
+        <div class="tool-card">
             <div class="tool-group">
-                <label>🖼️ Passport Sheet Generator</label>
+                <label>🖼️ Passport Sheet Maker</label>
                 <input type="file" id="passInput" accept="image/*" onchange="showPreview(this)">
                 <img id="preview" alt="Preview">
-                <input type="number" id="photoQty" value="12" placeholder="Photos Count">
-                <button onclick="generatePassport()">Create A4 Print</button>
+                <input type="number" id="photoQty" value="12">
+                <button onclick="generatePassport()">Create A4 Sheet</button>
             </div>
         </div>
     </div>
@@ -181,16 +184,14 @@
         <div class="legal-box">
             <div>
                 <div class="legal-title">Disclaimer</div>
-                Das Digital Studio (D Studio) is a tool platform. We do not store your private images on our servers. All processing happens in your browser for 100% security.
+                D Studio processing happens locally in your browser. We never upload or store your private photos on our servers.
             </div>
             <div>
                 <div class="legal-title">Terms & Conditions</div>
-                By using our tools, you agree that processing results depend on the quality of original files. We are not responsible for any data loss during local browser operations.
+                Accuracy of resizing and PDF conversion depends on source file quality. Use of these tools is subject to local device performance.
             </div>
         </div>
-        <div class="copyright">
-            © 2026 D STUDIO • MAINTAINED BY AMIT DAS
-        </div>
+        <div class="copyright">© 2026 D STUDIO • AMIT DAS</div>
     </footer>
 
 <script>
@@ -208,24 +209,31 @@
         }
     }
 
-    // --- KB RESIZER LOGIC ---
+    // PDF LOGIC
+    async function convertToPDF() {
+        const files = document.getElementById('pdfInput').files;
+        if (files.length === 0) return alert("Images select karein!");
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        for (let i = 0; i < files.length; i++) {
+            const imgData = await readFile(files[i]);
+            if (i > 0) doc.addPage();
+            doc.addImage(imgData, 'JPEG', 10, 10, 190, 277);
+        }
+        doc.save("D_Studio_Document.pdf");
+    }
+
+    // KB RESIZER LOGIC
     async function resizeKB() {
         const file = document.getElementById('kbInput').files[0];
         const target = parseInt(document.getElementById('targetKB').value);
-        if (!file || !target) return alert("Please fill all details!");
-
+        if (!file || !target) return alert("Info miss hai!");
         const img = new Image();
         img.src = await readFile(file);
         img.onload = function() {
-            let canvas = document.createElement('canvas');
-            let ctx = canvas.getContext('2d');
-            let scale = 1.0;
-            let finalData = "";
-            
-            // Loop for high accuracy
+            let canvas = document.createElement('canvas'), ctx = canvas.getContext('2d'), scale = 1.0, finalData = "";
             for (let i = 0; i < 6; i++) {
-                canvas.width = img.width * scale;
-                canvas.height = img.height * scale;
+                canvas.width = img.width * scale; canvas.height = img.height * scale;
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                 for (let q = 0.98; q > 0.1; q -= 0.05) {
                     finalData = canvas.toDataURL("image/jpeg", q);
@@ -234,50 +242,31 @@
                 }
                 if ((finalData.length * 3 / 4 / 1024) < target * 0.88) scale += 0.4; else break;
             }
-            triggerDownload(finalData, `D_Studio_${target}KB.jpg`);
+            const link = document.createElement('a'); link.href = finalData; link.download = `D_Studio_${target}KB.jpg`; link.click();
         };
     }
 
-    // --- PASSPORT LOGIC ---
+    // PASSPORT LOGIC
     async function generatePassport() {
         const file = document.getElementById('passInput').files[0];
         const qty = parseInt(document.getElementById('photoQty').value) || 12;
-        if (!file) return alert("Select Photo First!");
-
+        if (!file) return alert("Photo select karein!");
         const img = new Image();
         img.src = await readFile(file);
         img.onload = function() {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
+            const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
             canvas.width = 2480; canvas.height = 3508;
-            ctx.fillStyle = "white";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+            ctx.fillStyle = "white"; ctx.fillRect(0, 0, canvas.width, canvas.height);
             const pW = 413, pH = 531, gap = 50, margin = 120;
             let x = margin, y = margin;
-
             for (let i = 0; i < qty; i++) {
                 ctx.drawImage(img, x, y, pW, pH);
-                ctx.strokeStyle = "#e2e8f0";
-                ctx.lineWidth = 2;
-                ctx.strokeRect(x, y, pW, pH);
+                ctx.strokeStyle = "#e2e8f0"; ctx.lineWidth = 2; ctx.strokeRect(x, y, pW, pH);
                 x += pW + gap;
-                if (x + pW > canvas.width - margin) {
-                    x = margin;
-                    y += pH + gap;
-                }
+                if (x + pW > canvas.width - margin) { x = margin; y += pH + gap; }
             }
-            triggerDownload(canvas.toDataURL("image/jpeg", 0.9), "D_Studio_Passport.jpg");
+            const link = document.createElement('a'); link.href = canvas.toDataURL("image/jpeg", 0.9); link.download = "D_Studio_Passport.jpg"; link.click();
         };
-    }
-
-    function triggerDownload(url, name) {
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = name;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
     }
 </script>
 </body>
