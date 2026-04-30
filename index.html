@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>D Studio | Professional Workspace</title>
+    <title>D Studio | Premium Workspace</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
     <style>
@@ -20,7 +20,7 @@
 
         body {
             margin: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Outfit', sans-serif; /* Stylish & Modern Font */
             background-color: var(--bg);
             color: var(--text-primary);
             line-height: 1.6;
@@ -39,68 +39,128 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent); }
+        .logo { 
+            font-family: 'Space Grotesk', sans-serif; 
+            font-size: 28px; 
+            font-weight: 700; 
+            color: var(--accent); 
+            letter-spacing: -1.5px;
+        }
 
-        .container { max-width: 500px; margin: 30px auto; padding: 0 20px; }
+        .container { max-width: 520px; margin: 40px auto; padding: 0 20px; }
 
         .tool-card {
             background: var(--card);
-            border-radius: 24px;
-            padding: 25px;
+            border-radius: 28px;
+            padding: 30px;
             border: 1px solid var(--border);
-            margin-bottom: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            margin-bottom: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
 
-        .tool-group label { display: block; font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
+        /* STYLISH LABELS */
+        .tool-group label { 
+            display: block; 
+            font-size: 16px; /* Bada size */
+            font-weight: 900; /* Extra Bold */
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin-bottom: 15px; 
+            letter-spacing: 2px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
 
         input, select {
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background: #1f2937;
             border: 1px solid #374151;
-            border-radius: 12px;
+            border-radius: 14px;
             color: white;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             box-sizing: border-box;
             font-family: inherit;
+            font-size: 15px;
         }
 
         button {
             width: 100%;
-            padding: 15px;
+            padding: 18px;
             background: var(--accent);
             color: #030712;
             border: none;
-            border-radius: 12px;
-            font-weight: 700;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 16px;
             cursor: pointer;
-            transition: 0.3s;
-            margin-top: 5px;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); margin-bottom: 10px; }
+        button:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 12px 20px -8px var(--accent);
+            filter: brightness(1.1);
+        }
+
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid var(--accent); 
+            color: var(--accent); 
+            margin-bottom: 15px; 
+        }
 
         .photo-entry {
-            background: rgba(255,255,255,0.03);
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 15px;
+            background: rgba(255,255,255,0.02);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
             border: 1px dashed var(--border);
         }
 
-        footer { background: #000; padding: 40px 20px; border-top: 1px solid var(--border); text-align: center; margin-top: 50px; }
-        .legal-box { max-width: 800px; margin: 0 auto; text-align: left; font-size: 11px; color: var(--text-secondary); display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .legal-title { color: var(--text-primary); font-weight: 700; margin-bottom: 5px; font-size: 13px; }
+        footer { 
+            background: #000; 
+            padding: 50px 20px; 
+            border-top: 1px solid var(--border); 
+            text-align: center; 
+            margin-top: 60px; 
+        }
+
+        .legal-box { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: left; 
+            font-size: 12px; 
+            color: var(--text-secondary); 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+        }
+
+        .legal-title { 
+            color: var(--text-primary); 
+            font-weight: 800; 
+            margin-bottom: 10px; 
+            font-size: 15px; 
+            text-transform: uppercase;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-weight: 700;
+            color: #475569;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">D STUDIO</div>
-        <div class="nav-links" style="display: flex; gap: 15px; font-size: 14px;">
-            <a href="#" style="color: var(--text-secondary); text-decoration: none;">Home</a>
-            <a href="#" style="color: var(--text-secondary); text-decoration: none;">Tools</a>
+        <div style="display: flex; gap: 20px;">
+            <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 700; font-size: 14px;">HOME</a>
+            <a href="#" style="color: var(--text-secondary); text-decoration: none; font-weight: 700; font-size: 14px;">TOOLS</a>
         </div>
     </nav>
 
@@ -127,14 +187,14 @@
                 <label>🖼️ Multi-Size Print Sheet</label>
                 <div id="photoContainer">
                     <div class="photo-entry">
-                        <label>Person 1 Photo</label>
+                        <label style="font-size: 12px; color: var(--text-secondary);">Person 1 Setup</label>
                         <input type="file" class="p-input" accept="image/*">
                         <select class="p-size">
-                            <option value="passport">Passport (3.5x4.5 cm)</option>
+                            <option value="passport">Passport Size</option>
                             <option value="aadhar">Aadhar Card Size</option>
                             <option value="stamp">Stamp Size</option>
                         </select>
-                        <input type="number" class="p-qty" value="12" placeholder="Quantity">
+                        <input type="number" class="p-qty" value="12">
                     </div>
                 </div>
                 <button class="btn-outline" onclick="addPhotoSlot()">+ Add Another Person</button>
@@ -145,10 +205,16 @@
 
     <footer>
         <div class="legal-box">
-            <div><div class="legal-title">Disclaimer</div>D Studio processing happens locally. Private photos are never uploaded to servers.</div>
-            <div><div class="legal-title">Terms & Conditions</div>Accuracy depends on source quality and browser performance.</div>
+            <div>
+                <div class="legal-title">Disclaimer</div>
+                D Studio processing happens locally. Private photos are never uploaded or stored on any external servers for 100% security.
+            </div>
+            <div>
+                <div class="legal-title">Terms & Conditions</div>
+                Accuracy of resizing depends on original file resolution. Our tools are optimized for high-performance browser operations.
+            </div>
         </div>
-        <div style="margin-top: 20px; font-size: 11px; color: #475569;">© 2026 D STUDIO • AMIT DAS</div>
+        <div class="copyright">© 2026 D STUDIO • PROFESSIONAL DIGITAL SOLUTIONS</div>
     </footer>
 
 <script>
@@ -161,7 +227,7 @@
     function addPhotoSlot() {
         const div = document.createElement('div');
         div.className = 'photo-entry';
-        div.innerHTML = `<label>Next Person Photo</label><input type="file" class="p-input" accept="image/*"><select class="p-size"><option value="passport">Passport</option><option value="aadhar">Aadhar Card</option><option value="stamp">Stamp</option></select><input type="number" class="p-qty" value="4">`;
+        div.innerHTML = `<label style="font-size: 12px; color: var(--text-secondary);">Next Person Setup</label><input type="file" class="p-input" accept="image/*"><select class="p-size"><option value="passport">Passport</option><option value="aadhar">Aadhar Card</option><option value="stamp">Stamp</option></select><input type="number" class="p-qty" value="4">`;
         document.getElementById('photoContainer').appendChild(div);
     }
 
@@ -201,7 +267,6 @@
         const slots = document.querySelectorAll('.photo-entry'), canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
         canvas.width = 2480; canvas.height = 3508; ctx.fillStyle = "white"; ctx.fillRect(0, 0, canvas.width, canvas.height);
         let curX = 120, curY = 120, gap = 50, margin = 120;
-
         for (const slot of slots) {
             const file = slot.querySelector('.p-input').files[0], sizeType = slot.querySelector('.p-size').value, qty = parseInt(slot.querySelector('.p-qty').value) || 0;
             if (!file) continue;
