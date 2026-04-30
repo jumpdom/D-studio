@@ -39,51 +39,22 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: -1px;
-        }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent); }
 
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600; }
-
-        .hero {
-            text-align: center;
-            padding: 50px 20px;
-            background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
-        }
-
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 38px;
-            margin: 0;
-            background: linear-gradient(to right, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-        }
+        .container { max-width: 500px; margin: 30px auto; padding: 0 20px; }
 
         .tool-card {
             background: var(--card);
             border-radius: 24px;
             padding: 25px;
             border: 1px solid var(--border);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .tool-group { margin-bottom: 25px; }
         .tool-group label { display: block; font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
 
-        input {
+        input, select {
             width: 100%;
             padding: 14px;
             background: #1f2937;
@@ -103,53 +74,35 @@
             border: none;
             border-radius: 12px;
             font-weight: 700;
-            font-size: 15px;
             cursor: pointer;
             transition: 0.3s;
+            margin-top: 5px;
         }
 
-        button:hover { transform: translateY(-2px); box-shadow: 0 8px 15px -5px var(--accent); }
+        .btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); margin-bottom: 10px; }
 
-        footer {
-            background: #000;
-            padding: 40px 20px;
-            border-top: 1px solid var(--border);
-            text-align: center;
+        .photo-entry {
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 1px dashed var(--border);
         }
 
-        .legal-box {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-            font-size: 11px;
-            color: var(--text-secondary);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
+        footer { background: #000; padding: 40px 20px; border-top: 1px solid var(--border); text-align: center; margin-top: 50px; }
+        .legal-box { max-width: 800px; margin: 0 auto; text-align: left; font-size: 11px; color: var(--text-secondary); display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .legal-title { color: var(--text-primary); font-weight: 700; margin-bottom: 5px; font-size: 13px; }
-
-        .copyright { margin-top: 30px; color: #475569; font-size: 11px; }
-
-        #preview { width: 80px; height: 100px; object-fit: cover; border-radius: 8px; display: none; margin: 10px auto; border: 1px solid var(--accent); }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">D STUDIO</div>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Tools</a>
-            <a href="#">Contact</a>
+        <div class="nav-links" style="display: flex; gap: 15px; font-size: 14px;">
+            <a href="#" style="color: var(--text-secondary); text-decoration: none;">Home</a>
+            <a href="#" style="color: var(--text-secondary); text-decoration: none;">Tools</a>
         </div>
     </nav>
-
-    <div class="hero">
-        <h1>Digital Workspace</h1>
-        <p>Premium Tools by Amit Das</p>
-    </div>
 
     <div class="container">
         <div class="tool-card">
@@ -164,34 +117,38 @@
             <div class="tool-group">
                 <label>⚖️ Exact KB Resizer</label>
                 <input type="file" id="kbInput" accept="image/*">
-                <input type="number" id="targetKB" placeholder="Target Size (e.g., 150 KB)">
+                <input type="number" id="targetKB" placeholder="Target Size (KB)">
                 <button onclick="resizeKB()">Optimize Size</button>
             </div>
         </div>
 
         <div class="tool-card">
             <div class="tool-group">
-                <label>🖼️ Passport Sheet Maker</label>
-                <input type="file" id="passInput" accept="image/*" onchange="showPreview(this)">
-                <img id="preview" alt="Preview">
-                <input type="number" id="photoQty" value="12">
-                <button onclick="generatePassport()">Create A4 Sheet</button>
+                <label>🖼️ Multi-Size Print Sheet</label>
+                <div id="photoContainer">
+                    <div class="photo-entry">
+                        <label>Person 1 Photo</label>
+                        <input type="file" class="p-input" accept="image/*">
+                        <select class="p-size">
+                            <option value="passport">Passport (3.5x4.5 cm)</option>
+                            <option value="aadhar">Aadhar Card Size</option>
+                            <option value="stamp">Stamp Size</option>
+                        </select>
+                        <input type="number" class="p-qty" value="12" placeholder="Quantity">
+                    </div>
+                </div>
+                <button class="btn-outline" onclick="addPhotoSlot()">+ Add Another Person</button>
+                <button onclick="generateMultiPrint()">Create A4 Print Sheet</button>
             </div>
         </div>
     </div>
 
     <footer>
         <div class="legal-box">
-            <div>
-                <div class="legal-title">Disclaimer</div>
-                D Studio processing happens locally in your browser. We never upload or store your private photos on our servers.
-            </div>
-            <div>
-                <div class="legal-title">Terms & Conditions</div>
-                Accuracy of resizing and PDF conversion depends on source file quality. Use of these tools is subject to local device performance.
-            </div>
+            <div><div class="legal-title">Disclaimer</div>D Studio processing happens locally. Private photos are never uploaded to servers.</div>
+            <div><div class="legal-title">Terms & Conditions</div>Accuracy depends on source quality and browser performance.</div>
         </div>
-        <div class="copyright">© 2026 D STUDIO • AMIT DAS</div>
+        <div style="margin-top: 20px; font-size: 11px; color: #475569;">© 2026 D STUDIO • AMIT DAS</div>
     </footer>
 
 <script>
@@ -201,18 +158,16 @@
         reader.readAsDataURL(file);
     });
 
-    function showPreview(input) {
-        const prev = document.getElementById('preview');
-        if (input.files[0]) {
-            prev.src = URL.createObjectURL(input.files[0]);
-            prev.style.display = 'block';
-        }
+    function addPhotoSlot() {
+        const div = document.createElement('div');
+        div.className = 'photo-entry';
+        div.innerHTML = `<label>Next Person Photo</label><input type="file" class="p-input" accept="image/*"><select class="p-size"><option value="passport">Passport</option><option value="aadhar">Aadhar Card</option><option value="stamp">Stamp</option></select><input type="number" class="p-qty" value="4">`;
+        document.getElementById('photoContainer').appendChild(div);
     }
 
-    // PDF LOGIC
     async function convertToPDF() {
         const files = document.getElementById('pdfInput').files;
-        if (files.length === 0) return alert("Images select karein!");
+        if (!files.length) return alert("Select images!");
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
         for (let i = 0; i < files.length; i++) {
@@ -220,16 +175,13 @@
             if (i > 0) doc.addPage();
             doc.addImage(imgData, 'JPEG', 10, 10, 190, 277);
         }
-        doc.save("D_Studio_Document.pdf");
+        doc.save("D_Studio_Doc.pdf");
     }
 
-    // KB RESIZER LOGIC
     async function resizeKB() {
-        const file = document.getElementById('kbInput').files[0];
-        const target = parseInt(document.getElementById('targetKB').value);
-        if (!file || !target) return alert("Info miss hai!");
-        const img = new Image();
-        img.src = await readFile(file);
+        const file = document.getElementById('kbInput').files[0], target = parseInt(document.getElementById('targetKB').value);
+        if (!file || !target) return alert("Details bhariye!");
+        const img = new Image(); img.src = await readFile(file);
         img.onload = function() {
             let canvas = document.createElement('canvas'), ctx = canvas.getContext('2d'), scale = 1.0, finalData = "";
             for (let i = 0; i < 6; i++) {
@@ -237,36 +189,34 @@
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                 for (let q = 0.98; q > 0.1; q -= 0.05) {
                     finalData = canvas.toDataURL("image/jpeg", q);
-                    let size = (finalData.length * 3) / 4 / 1024;
-                    if (size <= target && size > target * 0.92) break;
+                    if ((finalData.length * 3 / 4 / 1024) <= target) break;
                 }
-                if ((finalData.length * 3 / 4 / 1024) < target * 0.88) scale += 0.4; else break;
+                if ((finalData.length * 3 / 4 / 1024) < target * 0.85) scale += 0.4; else break;
             }
             const link = document.createElement('a'); link.href = finalData; link.download = `D_Studio_${target}KB.jpg`; link.click();
         };
     }
 
-    // PASSPORT LOGIC
-    async function generatePassport() {
-        const file = document.getElementById('passInput').files[0];
-        const qty = parseInt(document.getElementById('photoQty').value) || 12;
-        if (!file) return alert("Photo select karein!");
-        const img = new Image();
-        img.src = await readFile(file);
-        img.onload = function() {
-            const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
-            canvas.width = 2480; canvas.height = 3508;
-            ctx.fillStyle = "white"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            const pW = 413, pH = 531, gap = 50, margin = 120;
-            let x = margin, y = margin;
+    async function generateMultiPrint() {
+        const slots = document.querySelectorAll('.photo-entry'), canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
+        canvas.width = 2480; canvas.height = 3508; ctx.fillStyle = "white"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+        let curX = 120, curY = 120, gap = 50, margin = 120;
+
+        for (const slot of slots) {
+            const file = slot.querySelector('.p-input').files[0], sizeType = slot.querySelector('.p-size').value, qty = parseInt(slot.querySelector('.p-qty').value) || 0;
+            if (!file) continue;
+            const img = new Image(); img.src = await readFile(file);
+            await new Promise(r => img.onload = r);
+            let pW = (sizeType==='passport')?413:(sizeType==='aadhar'?600:236), pH = (sizeType==='passport')?531:(sizeType==='aadhar'?900:295);
             for (let i = 0; i < qty; i++) {
-                ctx.drawImage(img, x, y, pW, pH);
-                ctx.strokeStyle = "#e2e8f0"; ctx.lineWidth = 2; ctx.strokeRect(x, y, pW, pH);
-                x += pW + gap;
-                if (x + pW > canvas.width - margin) { x = margin; y += pH + gap; }
+                if (curX + pW > canvas.width - margin) { curX = margin; curY += pH + gap; }
+                ctx.drawImage(img, curX, curY, pW, pH);
+                ctx.strokeStyle = "#ddd"; ctx.strokeRect(curX, curY, pW, pH);
+                curX += pW + gap;
             }
-            const link = document.createElement('a'); link.href = canvas.toDataURL("image/jpeg", 0.9); link.download = "D_Studio_Passport.jpg"; link.click();
-        };
+            curX = margin; curY += pH + gap;
+        }
+        const link = document.createElement('a'); link.href = canvas.toDataURL("image/jpeg", 0.9); link.download = "D_Studio_Print.jpg"; link.click();
     }
 </script>
 </body>
