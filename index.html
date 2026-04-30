@@ -24,14 +24,12 @@
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg);
             color: var(--text-primary);
-            line-height: 1.6;
         }
 
-        /* HEADER DESIGN - CENTERED LOGO */
         nav {
-            padding: 20px;
+            padding: 15px;
             text-align: center;
-            background: rgba(3, 7, 18, 0.85);
+            background: rgba(3, 7, 18, 0.9);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
@@ -42,86 +40,62 @@
         .logo-container {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        /* STYLISH LOGO ICON */
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--accent), #0ea5e9);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            color: #030712;
-            font-size: 20px;
-            box-shadow: 0 0 15px var(--border);
+            gap: 15px;
         }
 
         .logo-text { 
             font-family: 'Space Grotesk', sans-serif; 
-            font-size: 28px; 
+            font-size: 26px; 
             font-weight: 700; 
             color: var(--accent); 
             letter-spacing: -1px;
         }
 
-        .container { max-width: 520px; margin: 30px auto; padding: 0 20px; }
+        .container { max-width: 500px; margin: 30px auto; padding: 0 20px; }
 
-        /* TYPOGRAPHY UPGRADE */
         .tool-card {
             background: var(--card);
             border-radius: 28px;
-            padding: 30px;
+            padding: 25px;
             border: 1px solid var(--border);
             margin-bottom: 25px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
         .tool-group label { 
             display: block; 
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 900; 
             color: var(--accent); 
             text-transform: uppercase; 
-            margin-bottom: 15px; 
-            letter-spacing: 1.5px;
+            margin-bottom: 12px; 
             font-family: 'Space Grotesk', sans-serif;
         }
 
         input, select {
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             background: #1f2937;
             border: 1px solid #374151;
-            border-radius: 14px;
+            border-radius: 12px;
             color: white;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             box-sizing: border-box;
-            font-family: inherit;
         }
 
         button {
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             background: var(--accent);
             color: #030712;
             border: none;
-            border-radius: 14px;
+            border-radius: 12px;
             font-weight: 800;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
-            transition: 0.3s;
             text-transform: uppercase;
         }
 
-        button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px -5px var(--accent); }
-
-        .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--accent); margin-bottom: 12px; }
-
-        /* WHATSAPP HELP BUTTON */
         .whatsapp-btn {
             background: var(--whatsapp);
             color: white;
@@ -130,51 +104,30 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 15px;
-            border-radius: 14px;
+            padding: 14px;
+            border-radius: 12px;
             font-weight: 700;
             margin-top: 10px;
-            transition: 0.3s;
         }
-
-        .whatsapp-btn:hover { filter: brightness(1.1); transform: scale(1.02); }
 
         .photo-entry {
             background: rgba(255,255,255,0.02);
-            padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 18px;
+            margin-bottom: 15px;
             border: 1px dashed var(--border);
         }
 
-        footer { 
-            background: #000; 
-            padding: 40px 20px; 
-            border-top: 1px solid var(--border); 
-            text-align: center; 
-            margin-top: 50px; 
-        }
-
-        .legal-box { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            text-align: left; 
-            font-size: 12px; 
-            color: var(--text-secondary); 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 20px; 
-        }
-
-        .copyright { margin-top: 30px; font-weight: 700; color: #475569; letter-spacing: 1px; font-size: 11px; }
+        footer { background: #000; padding: 30px; text-align: center; border-top: 1px solid var(--border); margin-top: 40px; }
+        .copyright { color: #475569; font-size: 11px; font-weight: 700; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo-container">
-            <div class="logo-icon">D</div>
-            <div class="logo-text">STUDIO</div>
+            <img src="IMG_6145.jpeg" alt="Logo" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent);">
+            <div class="logo-text">D STUDIO</div>
         </div>
     </nav>
 
@@ -192,7 +145,6 @@
                 <label>🖼️ Print Sheet Maker</label>
                 <div id="photoContainer">
                     <div class="photo-entry">
-                        <label style="font-size: 11px; color: var(--text-secondary);">Add Person Photo</label>
                         <input type="file" class="p-input" accept="image/*">
                         <select class="p-size">
                             <option value="passport">Passport Size</option>
@@ -202,37 +154,21 @@
                         <input type="number" class="p-qty" value="12">
                     </div>
                 </div>
-                <button class="btn-outline" onclick="addPhotoSlot()">+ Add More Photo</button>
+                <button style="background:transparent; border:1px solid var(--accent); color:var(--accent); margin-bottom:10px;" onclick="addPhotoSlot()">+ Add More Photo</button>
                 <button onclick="generateMultiPrint()">Create A4 Sheet</button>
             </div>
         </div>
 
-        <div class="tool-card">
-            <div class="tool-group">
-                <label>⚖️ Size Compressor</label>
-                <input type="file" id="kbInput" accept="image/*">
-                <input type="number" id="targetKB" placeholder="Enter Target KB">
-                <button onclick="resizeKB()">Optimize Image</button>
-            </div>
-        </div>
-
         <div class="tool-card" style="text-align: center;">
-            <div class="tool-group">
-                <label>Need Help?</label>
-                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 15px;">Facing issues? Chat with us directly.</p>
-                <a href="https://wa.me/918521694137?text=Hello%20D%20Studio,%20I%20need%20help." class="whatsapp-btn">
-                    <span>💬 WhatsApp Support</span>
-                </a>
-            </div>
+            <label>Help & Support</label>
+            <a href="https://wa.me/918521694137?text=Hello%20D%20Studio,%20I%20need%20help." class="whatsapp-btn">
+                <span>💬 WhatsApp: 8521694137</span>
+            </a>
         </div>
     </div>
 
     <footer>
-        <div class="legal-box">
-            <div><b>Security:</b> All processing is local. Your files never leave your device.</div>
-            <div><b>Support:</b> For custom solutions, contact via WhatsApp.</div>
-        </div>
-        <div class="copyright">© 2026 D STUDIO • PROFESSIONAL WORKSPACE</div>
+        <div class="copyright">© 2026 D STUDIO • AMIT DAS</div>
     </footer>
 
 <script>
@@ -245,7 +181,7 @@
     function addPhotoSlot() {
         const div = document.createElement('div');
         div.className = 'photo-entry';
-        div.innerHTML = `<label style="font-size: 11px; color: var(--text-secondary);">Next Person Setup</label><input type="file" class="p-input" accept="image/*"><select class="p-size"><option value="passport">Passport</option><option value="aadhar">Aadhar</option><option value="stamp">Stamp</option></select><input type="number" class="p-qty" value="4">`;
+        div.innerHTML = `<input type="file" class="p-input" accept="image/*"><select class="p-size"><option value="passport">Passport</option><option value="aadhar">Aadhar</option><option value="stamp">Stamp</option></select><input type="number" class="p-qty" value="4">`;
         document.getElementById('photoContainer').appendChild(div);
     }
 
@@ -260,25 +196,6 @@
             doc.addImage(imgData, 'JPEG', 10, 10, 190, 277);
         }
         doc.save("D_Studio_Doc.pdf");
-    }
-
-    async function resizeKB() {
-        const file = document.getElementById('kbInput').files[0], target = parseInt(document.getElementById('targetKB').value);
-        if (!file || !target) return alert("Fill details!");
-        const img = new Image(); img.src = await readFile(file);
-        img.onload = function() {
-            let canvas = document.createElement('canvas'), ctx = canvas.getContext('2d'), scale = 1.0, finalData = "";
-            for (let i = 0; i < 6; i++) {
-                canvas.width = img.width * scale; canvas.height = img.height * scale;
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                for (let q = 0.98; q > 0.1; q -= 0.05) {
-                    finalData = canvas.toDataURL("image/jpeg", q);
-                    if ((finalData.length * 3 / 4 / 1024) <= target) break;
-                }
-                if ((finalData.length * 3 / 4 / 1024) < target * 0.85) scale += 0.4; else break;
-            }
-            const link = document.createElement('a'); link.href = finalData; link.download = `D_Studio_${target}KB.jpg`; link.click();
-        };
     }
 
     async function generateMultiPrint() {
