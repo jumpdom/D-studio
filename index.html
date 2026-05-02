@@ -3,153 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D Studio - Advance Image Tools</title>
+    <title>D Studio - Multi-Tasking Image Tools</title>
     <link rel="icon" type="image/jpeg" href="IMG_6145.jpeg">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        body { background-color: #0d0d0d; color: #e0e0e0; font-family: 'Arial', sans-serif; text-align: center; margin: 0; padding: 0; }
-        header { background: #1a1a1a; padding: 15px; border-bottom: 2px solid #ffcc00; display: flex; justify-content: space-between; align-items: center; padding: 10px 30px; }
-        .logo-img { width: 45px; border-radius: 50%; border: 1px solid #ffcc00; }
-        .container { max-width: 900px; margin: 20px auto; padding: 20px; }
-        h1 { color: #ffcc00; font-size: 28px; }
-        .tool-box { background: #1a1a1a; padding: 25px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #333; text-align: left; }
-        .tool-box h3 { color: #ffcc00; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        input, select { background: #262626; color: #fff; padding: 10px; border: 1px solid #444; border-radius: 5px; margin: 5px 0; width: 100%; box-sizing: border-box; }
-        .btn-pro { background: linear-gradient(45deg, #ffcc00, #ff9000); color: #000; border: none; padding: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 15px; width: 100%; font-size: 16px; }
-        footer { background: #111; padding: 20px; font-size: 12px; border-top: 1px solid #333; }
+        body { background:#0d0d0d; color:#e0e0e0; font-family:sans-serif; text-align:center; padding:10px; }
+        .box { background:#1a1a1a; padding:15px; border-radius:10px; margin:10px auto; max-width:600px; border:1px solid #333; text-align:left; }
+        h2 { color:#ffcc00; font-size:18px; margin-top:0; border-bottom:1px solid #333; padding-bottom:5px; }
+        input, select { width:100%; padding:10px; margin:5px 0; background:#222; color:#fff; border:1px solid #444; border-radius:5px; box-sizing:border-box; }
+        .btn { background:#ffcc00; color:#000; padding:12px; border:none; width:100%; font-weight:bold; cursor:pointer; border-radius:5px; margin-top:5px; }
+        .person-entry { background:#262626; padding:10px; border-radius:5px; margin-bottom:10px; border-left:4px solid #ffcc00; }
+        .add-btn { background:#28a745; color:#fff; margin-bottom:10px; padding:8px; border:none; border-radius:5px; cursor:pointer; width:auto; font-size:12px; }
+        .status { font-size:12px; color:#ffcc00; margin-top:5px; display:none; }
     </style>
 </head>
 <body>
 
-<header>
-    <img src="IMG_6145.jpeg" alt="Logo" class="logo-img">
-    <div style="font-weight: bold; color: #ffcc00; font-size: 20px;">D STUDIO</div>
-    <div onclick="alert('Help: Select image, set options, and download.')" style="cursor:pointer; color:#ffcc00;"><i class="fas fa-question-circle"></i></div>
-</header>
+    <h1 style="color:#ffcc00;">D STUDIO</h1>
 
-<div class="container">
-    <h1>D STUDIO PROFESSIONAL TOOLS</h1>
-
-    <!-- 1. PDF (NO WHITE BORDERS) -->
-    <div class="tool-box">
-        <h3><i class="fas fa-file-pdf"></i> IMAGE TO PDF (FULL FIT)</h3>
-        <label>Select Images (Construction Logs/Photos):</label>
-        <input type="file" id="pdfInput" multiple accept="image/*">
-        <button class="btn-pro" onclick="generatePDF()">GENERATE FULL-FIT PDF</button>
+    <!-- 1. PDF (Full Fit) -->
+    <div class="box">
+        <h2>1. Image to PDF (No White Borders)</h2>
+        <input type="file" id="pdfIn" multiple accept="image/*">
+        <button class="btn" onclick="makePDF()">GENERATE FIT PDF</button>
     </div>
 
-    <!-- 2. RESIZE BY KB -->
-    <div class="tool-box">
-        <h3><i class="fas fa-compress-arrows-alt"></i> RESIZE BY KB SIZE</h3>
-        <input type="file" id="resizeInput" accept="image/*">
-        <label>Target Size (KB):</label>
-        <input type="number" id="targetKB" placeholder="Example: 50">
-        <button class="btn-pro" onclick="resizeByKB()">RESIZE & DOWNLOAD</button>
+    <!-- 2. Resize by KB (New Fixed Logic) -->
+    <div class="box">
+        <h2>2. Resize Image (Set KB Size)</h2>
+        <input type="file" id="resIn" accept="image/*">
+        <input type="number" id="kbSize" placeholder="Enter KB (e.g. 50, 100, 200)">
+        <p id="resStatus" class="status">Processing...</p>
+        <button class="btn" onclick="resKB()">RESIZE & DOWNLOAD</button>
     </div>
 
-    <!-- 3. PASSPORT & MULTI-SIZE -->
-    <div class="tool-box">
-        <h3><i class="fas fa-id-badge"></i> PASSPORT & MULTI-SIZE MAKER</h3>
-        <input type="file" id="passportInput" accept="image/*">
-        <label>Select Size:</label>
-        <select id="photoSize">
-            <option value="passport">Passport Size (3.5 x 4.5 cm)</option>
-            <option value="stamp">Stamp Size (2 x 2.5 cm)</option>
-            <option value="visa">Visa Size (2 x 2 inch)</option>
+    <!-- 3. Multi-Person Passport -->
+    <div class="box">
+        <h2>3. Multi-Person Passport Sheet</h2>
+        <div id="peopleList">
+            <div class="person-entry">
+                <label>Person 1 Photo:</label>
+                <input type="file" class="p-file" accept="image/*">
+                <input type="number" class="p-qty" value="1" min="1" placeholder="Quantity">
+            </div>
+        </div>
+        <button class="add-btn" onclick="addPerson()">+ Add More Person</button>
+        <select id="pSize">
+            <option value="p">Passport (3.5x4.5cm)</option>
+            <option value="s">Stamp (2x2.5cm)</option>
         </select>
-        <label>Quantity:</label>
-        <input type="number" id="photoQty" value="1" min="1" max="50">
-        <button class="btn-pro" onclick="makePassportSheet()">CREATE PHOTO SHEET</button>
+        <button class="btn" onclick="makeMultiPass()">CREATE COMBINED SHEET</button>
     </div>
-</div>
-
-<footer>
-    <p>Disclaimer: No data is stored. Processing happens in browser.</p>
-    <p>&copy; 2026 D Studio | Maintained by Amit Das</p>
-</footer>
 
 <script>
     const { jsPDF } = window.jspdf;
 
-    // PDF: Actual Image Dimensions (No Borders)
-    async function generatePDF() {
-        const files = document.getElementById('pdfInput').files;
-        if (files.length === 0) return alert("Select images!");
+    // Helper: Read File
+    function read(f) { return new Promise(res => { const r = new FileReader(); r.onload = e => res(e.target.result); r.readAsDataURL(f); }); }
+    // Helper: Download
+    function dl(u, n) { const a = document.createElement('a'); a.href = u; a.download = n; a.click(); }
+
+    // 1. PDF Logic (Fit to exact image size)
+    async function makePDF() {
+        const files = document.getElementById('pdfIn').files;
+        if(!files.length) return alert("Select images!");
         let pdf;
-        for (let i = 0; i < files.length; i++) {
-            const data = await readFile(files[i]);
+        for(let i=0; i<files.length; i++){
+            const data = await read(files[i]);
             const img = new Image(); img.src = data;
             await new Promise(r => img.onload = r);
             const ori = img.width > img.height ? 'l' : 'p';
-            // Setting page size exactly to image size
-            if (i === 0) pdf = new jsPDF({ orientation: ori, unit: 'px', format: [img.width, img.height] });
+            if(i===0) pdf = new jsPDF({orientation:ori, unit:'px', format:[img.width, img.height]});
             else pdf.addPage([img.width, img.height], ori);
             pdf.addImage(data, 'JPEG', 0, 0, img.width, img.height);
         }
-        pdf.save("D-Studio-Fit.pdf");
+        pdf.save("D-Studio-Document.pdf");
     }
 
-    // Resize by KB Logic
-    async function resizeByKB() {
-        const file = document.getElementById('resizeInput').files[0];
-        const targetKB = document.getElementById('targetKB').value;
-        if (!file || !targetKB) return alert("Select image and enter KB!");
+    // 2. Resize Logic (KB Fixed)
+    async function resKB() {
+        const file = document.getElementById('resIn').files[0];
+        const target = parseInt(document.getElementById('kbSize').value);
+        const status = document.getElementById('resStatus');
+        if(!file || !target) return alert("Select photo and target KB!");
 
-        const imgData = await readFile(file);
-        const img = new Image(); img.src = imgData;
-        img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = img.width; canvas.height = img.height;
+        status.style.display = "block";
+        const data = await read(file);
+        const img = new Image(); img.src = data;
+        
+        img.onload = async () => {
+            const cvs = document.createElement('canvas');
+            const ctx = cvs.getContext('2d');
+            cvs.width = img.width; cvs.height = img.height;
             ctx.drawImage(img, 0, 0);
 
-            let quality = 0.9;
-            let result = canvas.toDataURL("image/jpeg", quality);
-            // Loop to reduce quality until KB is met
-            while ((result.length / 1024) > targetKB && quality > 0.1) {
-                quality -= 0.05;
-                result = canvas.toDataURL("image/jpeg", quality);
+            let low = 0.1, high = 1.0, bestRes = "";
+            // Binary search for best quality
+            for(let i=0; i<10; i++) {
+                let mid = (low + high) / 2;
+                let res = cvs.toDataURL("image/jpeg", mid);
+                let size = (res.length * 3/4) / 1024; // Approximation
+                if(size <= target) {
+                    bestRes = res;
+                    low = mid;
+                } else {
+                    high = mid;
+                }
             }
-            download(result, "resized-image.jpg");
+            if(!bestRes) bestRes = cvs.toDataURL("image/jpeg", 0.1);
+            status.style.display = "none";
+            dl(bestRes, `resized_${target}kb.jpg`);
         };
     }
 
-    // Passport Sheet Logic (Supports Multi-size & Qty)
-    async function makePassportSheet() {
-        const file = document.getElementById('passportInput').files[0];
-        const sizeType = document.getElementById('photoSize').value;
-        const qty = document.getElementById('photoQty').value;
-        if (!file) return alert("Select photo!");
-
-        const data = await readFile(file);
-        const img = new Image(); img.src = data;
-        img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Define sizes in px (Approx for 300 DPI)
-            let w = 413, h = 531; // Passport default
-            if(sizeType === 'stamp') { w = 236; h = 295; }
-            if(sizeType === 'visa') { w = 600; h = 600; }
-
-            canvas.width = (w + 20) * Math.min(qty, 4); 
-            canvas.height = (h + 20) * Math.ceil(qty / 4);
-            ctx.fillStyle = "#fff"; ctx.fillRect(0,0,canvas.width, canvas.height);
-
-            for (let i = 0; i < qty; i++) {
-                let x = (i % 4) * (w + 20);
-                let y = Math.floor(i / 4) * (h + 20);
-                ctx.drawImage(img, x + 10, y + 10, w, h);
-                ctx.strokeStyle = "#ccc"; ctx.strokeRect(x + 10, y + 10, w, h);
-            }
-            download(canvas.toDataURL("image/jpeg"), "photo-sheet.jpg");
-        };
+    // 3. Multi-Person Passport Logic
+    function addPerson() {
+        const div = document.createElement('div');
+        div.className = 'person-entry';
+        div.innerHTML = `<label>Next Person:</label>
+                         <input type="file" class="p-file" accept="image/*">
+                         <input type="number" class="p-qty" value="1" min="1" placeholder="Quantity">`;
+        document.getElementById('peopleList').appendChild(div);
     }
 
-    function readFile(file) { return new Promise(res => { const r = new FileReader(); r.onload = e => res(e.target.result); r.readAsDataURL(file); }); }
-    function download(url, name) { const a = document.createElement('a'); a.href = url; a.download = name; a.click(); }
+    async function makeMultiPass() {
+        const entries = document.querySelectorAll('.person-entry');
+        const size = document.getElementById('pSize').value;
+        let w = size === 'p' ? 413 : 236, h = size === 'p' ? 531 : 295;
+        
+        let totalQty = 0;
+        const items = [];
+
+        for(let entry of entries) {
+            const file = entry.querySelector('.p-file').files[0];
+            const qty = parseInt(entry.querySelector('.p-qty').value);
+            if(file && qty > 0) {
+                const data = await read(file);
+                items.push({ data, qty });
+                totalQty += qty;
+            }
+        }
+
+        if(!items.length) return alert("Photo select karein!");
+
+        const cvs = document.createElement('canvas');
+        const cols = 4;
+        cvs.width = (w + 10) * cols; 
+        cvs.height = (h + 10) * Math.ceil(totalQty / cols);
+        const ctx = cvs.getContext('2d');
+        ctx.fillStyle = "#fff"; ctx.fillRect(0,0,cvs.width, cvs.height);
+
+        let count = 0;
+        for(let item of items) {
+            const img = new Image(); img.src = item.data;
+            await new Promise(r => img.onload = r);
+            for(let i=0; i < item.qty; i++) {
+                let x = (count % cols) * (w + 10);
+                let y = Math.floor(count / cols) * (h + 10);
+                ctx.drawImage(img, x+5, y+5, w, h);
+                ctx.strokeStyle = "#eee"; ctx.strokeRect(x+5, y+5, w, h);
+                count++;
+            }
+        }
+        dl(cvs.toDataURL("image/jpeg"), "d-studio-passport.jpg");
+    }
 </script>
 </body>
 </html>
