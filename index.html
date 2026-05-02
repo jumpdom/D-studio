@@ -1,38 +1,100 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Google Search Title & Description -->
+    <!-- Title aur SEO jo aapne set kiya tha -->
     <title>Website Developer | Photo Editing | Video Editing Free</title>
-    <meta name="description" content="D Studio by Amit Das: Free professional tools for Website Development, Photo Editing, and Video Editing. Fast Image to PDF converter.">
+    <meta name="description" content="D Studio by Amit Das: Professional tools for PDF, Photo and Video editing.">
 
-    <!-- Favicon (Earth icon hatane ke liye) -->
+    <!-- Favicon/Logo -->
     <link rel="shortcut icon" type="image/jpeg" href="IMG_6145.jpeg">
     <link rel="icon" type="image/jpeg" href="IMG_6145.jpeg">
     <link rel="apple-touch-icon" href="IMG_6145.jpeg">
 
-    <!-- Google Verification (HATAna MAT) -->
-    <meta name="google-site-verification" content="YAHAN_APNA_PURANA_CODE_DAALEIN" />
+    <!-- Google Verification (Apna code yahan check kar lena) -->
+    <meta name="google-site-verification" content="Gv7Z789-V9V..." /> 
 
     <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
-        /* Aapka purana CSS yahan rahega */
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-        .preview-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
-        .preview-image { width: 150px; border: 1px solid #ddd; border-radius: 5px; }
-        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        /* D Studio Professional Theme */
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #ffcc00; /* Golden Title */
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 30px;
+        }
+        .container {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border-radius: 5px;
+            border: 1px dashed #ffcc00;
+        }
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .preview-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 2px solid #ffcc00;
+            border-radius: 8px;
+        }
+        .btn-generate {
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);
+        }
+        .btn-generate:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.6);
+        }
     </style>
 </head>
 <body>
 
-    <h1>D Studio - Image to PDF</h1>
-    <input type="file" id="fileInput" multiple accept="image/*">
-    <div class="preview-container" id="preview"></div>
-    <button onclick="generatePDF()">Generate PDF</button>
+    <div class="container">
+        <h1>D Studio - Image to PDF</h1>
+        <p>Professional Image to PDF Converter by Amit Das</p>
+        
+        <input type="file" id="fileInput" multiple accept="image/*">
+        
+        <div class="preview-container" id="preview"></div>
+        
+        <button class="btn-generate" onclick="generatePDF()">Generate Professional PDF</button>
+    </div>
 
     <script>
         const fileInput = document.getElementById('fileInput');
@@ -54,21 +116,26 @@
 
         async function generatePDF() {
             const images = document.querySelectorAll('.preview-image');
-            if (images.length === 0) return alert("Pehle photo select karein!");
+            if (images.length === 0) {
+                alert("Please select images first!");
+                return;
+            }
 
             const { jsPDF } = window.jspdf;
             let pdf;
 
             for (let i = 0; i < images.length; i++) {
                 const imgElement = images[i];
-                
-                // Image load hone ka intezaar karein
                 const img = new Image();
                 img.src = imgElement.src;
+                
+                // Wait for image to load to get dimensions
                 await new Promise(resolve => img.onload = resolve);
 
                 const imgWidth = img.naturalWidth;
                 const imgHeight = img.naturalHeight;
+                
+                // Automatic Orientation: 'l' for Landscape, 'p' for Portrait
                 const orientation = imgWidth > imgHeight ? 'l' : 'p';
 
                 if (i === 0) {
