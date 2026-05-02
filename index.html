@@ -1,362 +1,91 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head><!DOCTYPE html>
-<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 1. Google Search Result ka Title aur Description -->
-    <title>Convert Image to PDF | resize image in KB | multiple passport size photo converter | D Studio Online - 100% Free</title>
-    <meta name="description" content="Convert JPG, PNG images to PDF in seconds with D Studio. Fast, secure, and easy-to-use online PDF maker by Amit Das. No installation required.">
-    <meta name="keywords" content="Image to PDF, Photo to PDF, Resize Image, D Studio, Amit Das, Online PDF Maker">
+    <!-- Google Search Title & Description -->
+    <title>Website Developer | Photo Editing | Video Editing Free</title>
+    <meta name="description" content="D Studio by Amit Das: Free professional tools for Website Development, Photo Editing, and Video Editing. Fast Image to PDF converter.">
 
-    <!-- 2. Google Verification Tag (Isse mat hatana) -->
-    <meta name="google-site-verification" content="YAHAN_APNA_VERIFICATION_CODE_REHNE_DEIN" />
-
-    <!-- 3. Site ka Logo (Favicon) jo Google par dikhega -->
+    <!-- Favicon (Earth icon hatane ke liye) -->
+    <link rel="shortcut icon" type="image/jpeg" href="IMG_6145.jpeg">
     <link rel="icon" type="image/jpeg" href="IMG_6145.jpeg">
     <link rel="apple-touch-icon" href="IMG_6145.jpeg">
 
-    <!-- Aapka baaki ka CSS aur Styling code niche aayega -->
+    <!-- Google Verification (HATAna MAT) -->
+    <meta name="google-site-verification" content="YAHAN_APNA_PURANA_CODE_DAALEIN" />
+
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <style>
         /* Aapka purana CSS yahan rahega */
-    </style>
-</head>
-<body>
-    <!-- Aapka purana HTML Body code yahan rahega -->
-</body>
-</html>
-  <meta name="google-site-verification" content="KismncyryJRso2Smwmq7SgZrzVnVKhn0cBMlXi-am9Q" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>D Studio | Professional Workspace</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
-    <style>
-        :root {
-            --bg: #030712;
-            --card: #111827;
-            --accent: #38bdf8;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --border: rgba(56, 189, 248, 0.2);
-            --whatsapp: #25D366;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-primary);
-        }
-
-        /* NEW HEADER DESIGN */
-        nav {
-            padding: 15px 20px;
-            background: rgba(3, 7, 18, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--accent); /* Bottom Line Only */
-        }
-
-        .nav-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-img {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1.5px solid var(--accent);
-        }
-
-        .logo-text { 
-            font-family: 'Bricolage Grotesk', sans-serif; 
-            font-size: 24px; 
-            font-weight: 800; 
-            color: var(--accent); 
-            letter-spacing: -1px;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--accent); }
-
-        .container { max-width: 500px; margin: 30px auto; padding: 0 20px; }
-
-        .tool-card {
-            background: var(--card);
-            border-radius: 25px;
-            padding: 25px;
-            border: 1px solid var(--border);
-            margin-bottom: 25px;
-        }
-
-        .tool-group label { 
-            display: block; 
-            font-size: 15px;
-            font-weight: 900; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin-bottom: 15px; 
-        }
-
-        input, select {
-            width: 100%;
-            padding: 14px;
-            background: #1f2937;
-            border: 1px solid #374151;
-            border-radius: 12px;
-            color: white;
-            margin-bottom: 12px;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-
-        button {
-            width: 100%;
-            padding: 16px;
-            background: var(--accent);
-            color: #030712;
-            border: none;
-            border-radius: 12px;
-            font-weight: 800;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        /* FOOTER SECTIONS */
-        footer { 
-            background: #000; 
-            padding: 40px 20px; 
-            border-top: 1px solid var(--border); 
-            margin-top: 50px;
-        }
-
-        .footer-grid {
-            max-width: 800px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            text-align: left;
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        .footer-title {
-            color: var(--text-primary);
-            font-weight: 800;
-            margin-bottom: 8px;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        .copyright {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 11px;
-            color: #475569;
-            font-weight: 700;
-        }
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .preview-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
+        .preview-image { width: 150px; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; border-radius: 5px; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-wrapper">
-            <div class="logo-section">
-                <img src="IMG_6145.jpeg" alt="Logo" class="logo-img">
-                <div class="logo-text">D STUDIO</div>
-            </div>
-            <div class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">Links</a>
-                <a href="https://wa.me/918521694137">Contact</a>
-            </div>
-        </div>
-    </nav>
+    <h1>D Studio - Image to PDF</h1>
+    <input type="file" id="fileInput" multiple accept="image/*">
+    <div class="preview-container" id="preview"></div>
+    <button onclick="generatePDF()">Generate PDF</button>
 
-    <div class="container">
-        <div class="tool-card">
-            <div class="tool-group">
-                <label>📄 Image to PDF</label>
-                <input type="file" id="pdfInput" accept="image/*" multiple>
-                <button onclick="convertToPDF()">Export PDF</button>
-            </div>
-        </div>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
 
-        <div class="tool-card">
-            <div class="tool-group">
-                <label>⚖️ Image Resize (KB)</label>
-                <input type="file" id="kbInput" accept="image/*">
-                <input type="number" id="targetKB" placeholder="Target KB Size">
-                <button onclick="resizeKB()">Resize Image</button>
-            </div>
-        </div>
-
-        <div class="tool-card">
-            <div class="tool-group">
-                <label>🖼️ Multi-Print Sheet</label>
-                <div id="photoContainer">
-                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 15px; margin-bottom: 12px; border: 1px dashed var(--border);">
-                        <input type="file" class="p-input" accept="image/*">
-                        <select class="p-size">
-                            <option value="passport">Passport Size</option>
-                            <option value="aadhar">Aadhar Card Size</option>
-                            <option value="stamp">Stamp Size</option>
-                        </select>
-                        <input type="number" class="p-qty" value="12">
-                    </div>
-                </div>
-                <button style="background:transparent; border:1px solid var(--accent); color:var(--accent); margin-bottom:10px; font-size:12px;" onclick="addPhotoSlot()">+ Add Another Person</button>
-                <button onclick="generateMultiPrint()">Generate Sheet</button>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <div class="footer-title">Disclaimer</div>
-                D Studio provides local browser-based tools. We do not store or see your images. Usage is at user's own risk regarding file accuracy.
-            </div>
-            <div>
-                <div class="footer-title">T&C</div>
-                All services are provided "as is". By using this workspace, you agree that processing results depend on your device performance.
-            </div>
-        </div>
-        <div class="copyright">© 2026 D STUDIO • AMIT DAS</div>
-    </footer>
-
-<script>
-    const readFile = (file) => new Promise(res => {
-        const reader = new FileReader();
-        reader.onload = (e) => res(e.target.result);
-        reader.readAsDataURL(file);
-    });
-
-    function addPhotoSlot() {
-        const div = document.createElement('div');
-        div.style = "background: rgba(255,255,255,0.02); padding: 15px; border-radius: 15px; margin-bottom: 12px; border: 1px dashed var(--border);";
-        div.innerHTML = `<input type="file" class="p-input" accept="image/*"><select class="p-size"><option value="passport">Passport</option><option value="aadhar">Aadhar</option><option value="stamp">Stamp</option></select><input type="number" class="p-qty" value="4">`;
-        document.getElementById('photoContainer').appendChild(div);
-    }
-
-    async function convertToPDF() {
-        const files = document.getElementById('pdfInput').files;
-        if (!files.length) return alert("Select images!");
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-        for (let i = 0; i < files.length; i++) {
-            const imgData = await readFile(files[i]);
-            if (i > 0) doc.addPage();
-            doc.addImage(imgData, 'JPEG', 10, 10, 190, 277);
-        }
-        doc.save("D_Studio_Doc.pdf");
-    }
-
-    async function resizeKB() {
-        const file = document.getElementById('kbInput').files[0], target = parseInt(document.getElementById('targetKB').value);
-        if (!file || !target) return alert("Fill details!");
-        const img = new Image(); img.src = await readFile(file);
-        img.onload = function() {
-            let canvas = document.createElement('canvas'), ctx = canvas.getContext('2d'), scale = 1.0, finalData = "";
-            for (let i = 0; i < 6; i++) {
-                canvas.width = img.width * scale; canvas.height = img.height * scale;
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                for (let q = 0.98; q > 0.1; q -= 0.05) {
-                    finalData = canvas.toDataURL("image/jpeg", q);
-                    if ((finalData.length * 3 / 4 / 1024) <= target) break;
-                }
-                if ((finalData.length * 3 / 4 / 1024) < target * 0.85) scale += 0.4; else break;
-            }
-            const link = document.createElement('a'); link.href = finalData; link.download = `D_Studio_${target}KB.jpg`; link.click();
-        };
-    }
-
-    async function generateMultiPrint() {
-        const slots = document.querySelectorAll('.photo-entry'), canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
-        canvas.width = 2480; canvas.height = 3508; ctx.fillStyle = "white"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-        let curX = 120, curY = 120, gap = 50, margin = 120;
-        for (const slot of document.querySelectorAll('.p-input')) {
-            const parent = slot.parentElement, file = slot.files[0], sizeType = parent.querySelector('.p-size').value, qty = parseInt(parent.querySelector('.p-qty').value) || 0;
-            if (!file) continue;
-            const img = new Image(); img.src = await readFile(file);
-            await new Promise(r => img.onload = r);
-            let pW = (sizeType==='passport')?413:(sizeType==='aadhar'?600:236), pH = (sizeType==='passport')?531:(sizeType==='aadhar'?900:295);
-            for (let i = 0; i < qty; i++) {
-                if (curX + pW > canvas.width - margin) { curX = margin; curY += pH + gap; }
-                ctx.drawImage(img, curX, curY, pW, pH);
-                ctx.strokeStyle = "#ddd"; ctx.strokeRect(curX, curY, pW, pH);
-                curX += pW + gap;
-            }
-            curX = margin; curY += pH + gap;
-        }
-        const link = document.createElement('a'); link.href = canvas.toDataURL("image/jpeg", 0.9); link.download = "D_Studio_Print.jpg"; link.click();
-    }
-</script>function generatePDF() {
-    const images = document.querySelectorAll('.preview-image'); // Aapki images ki class
-    const { jsPDF } = window.jspdf;
-    let pdf;
-
-    images.forEach((imgElement, index) => {
-        const img = new Image();
-        img.src = imgElement.src;
-
-        // Photo ki asli width aur height nikalna
-        const imgWidth = img.naturalWidth;
-        const imgHeight = img.naturalHeight;
-
-        // Agar width height se zyada hai toh 'l' (landscape), nahi toh 'p' (portrait)
-        const orientation = imgWidth > imgHeight ? 'l' : 'p';
-
-        if (index === 0) {
-            pdf = new jsPDF({
-                orientation: orientation,
-                unit: 'px',
-                format: [imgWidth, imgHeight]
+        fileInput.addEventListener('change', () => {
+            preview.innerHTML = '';
+            Array.from(fileInput.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'preview-image';
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
             });
-        } else {
-            pdf.addPage([imgWidth, imgHeight], orientation);
+        });
+
+        async function generatePDF() {
+            const images = document.querySelectorAll('.preview-image');
+            if (images.length === 0) return alert("Pehle photo select karein!");
+
+            const { jsPDF } = window.jspdf;
+            let pdf;
+
+            for (let i = 0; i < images.length; i++) {
+                const imgElement = images[i];
+                
+                // Image load hone ka intezaar karein
+                const img = new Image();
+                img.src = imgElement.src;
+                await new Promise(resolve => img.onload = resolve);
+
+                const imgWidth = img.naturalWidth;
+                const imgHeight = img.naturalHeight;
+                const orientation = imgWidth > imgHeight ? 'l' : 'p';
+
+                if (i === 0) {
+                    pdf = new jsPDF({
+                        orientation: orientation,
+                        unit: 'px',
+                        format: [imgWidth, imgHeight]
+                    });
+                } else {
+                    pdf.addPage([imgWidth, imgHeight], orientation);
+                }
+
+                pdf.addImage(img, 'JPEG', 0, 0, imgWidth, imgHeight);
+            }
+
+            pdf.save("D-Studio-Generated.pdf");
         }
-
-        // Photo ko poore page par fit karna (0, 0 margin ke saath)
-        pdf.addImage(img, 'JPEG', 0, 0, imgWidth, imgHeight);
-    });
-
-    pdf.save("D-Studio-Generated.pdf");
-}
-
+    </script>
 </body>
 </html>
