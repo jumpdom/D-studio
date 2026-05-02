@@ -3,67 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D Studio - Multi-Tasking Image Tools</title>
+    <title>D Studio - Image to PDF & Passport Specialist</title>
+    
+    <!-- Aapka Logo -->
     <link rel="icon" type="image/jpeg" href="IMG_6145.jpeg">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        body { background:#0d0d0d; color:#e0e0e0; font-family:sans-serif; text-align:center; padding:10px; }
-        .box { background:#1a1a1a; padding:15px; border-radius:10px; margin:10px auto; max-width:600px; border:1px solid #333; text-align:left; }
-        h2 { color:#ffcc00; font-size:18px; margin-top:0; border-bottom:1px solid #333; padding-bottom:5px; }
-        input, select { width:100%; padding:10px; margin:5px 0; background:#222; color:#fff; border:1px solid #444; border-radius:5px; box-sizing:border-box; }
-        .btn { background:#ffcc00; color:#000; padding:12px; border:none; width:100%; font-weight:bold; cursor:pointer; border-radius:5px; margin-top:5px; }
-        .person-entry { background:#262626; padding:10px; border-radius:5px; margin-bottom:10px; border-left:4px solid #ffcc00; }
-        .add-btn { background:#28a745; color:#fff; margin-bottom:10px; padding:8px; border:none; border-radius:5px; cursor:pointer; width:auto; font-size:12px; }
-        .status { font-size:12px; color:#ffcc00; margin-top:5px; display:none; }
+        /* D Studio Classic Dark & Gold Theme */
+        body { background-color: #0f0f0f; color: #ffffff; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; padding: 0; }
+        header { background: #1a1a1a; padding: 15px; border-bottom: 2px solid #ffcc00; display: flex; justify-content: space-between; align-items: center; padding: 10px 30px; }
+        .logo-img { width: 50px; border-radius: 50%; border: 2px solid #ffcc00; box-shadow: 0 0 10px #ffcc00; }
+        
+        .container { max-width: 800px; margin: 30px auto; padding: 10px; }
+        h1 { color: #ffcc00; font-size: 32px; text-shadow: 2px 2px 5px #000; margin-bottom: 5px; }
+        
+        .tool-card { background: #1a1a1a; padding: 25px; border-radius: 15px; margin-bottom: 25px; border: 1px solid #333; box-shadow: 0 5px 15px rgba(0,0,0,0.5); text-align: left; }
+        .tool-card h3 { color: #ffcc00; border-bottom: 1px solid #444; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        
+        input, select { background: #262626; color: #fff; padding: 12px; border: 1px solid #444; border-radius: 8px; margin: 8px 0; width: 100%; box-sizing: border-box; }
+        .btn-gold { background: linear-gradient(45deg, #ffcc00, #ff9900); color: #000; border: none; padding: 15px; font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 10px rgba(255, 153, 0, 0.3); }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255, 153, 0, 0.5); }
+        
+        .person-entry { background: #222; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #ffcc00; position: relative; }
+        .add-more { background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-bottom: 15px; font-size: 14px; }
+        
+        footer { background: #111; padding: 30px; border-top: 1px solid #333; font-size: 13px; color: #888; }
     </style>
 </head>
 <body>
 
-    <h1 style="color:#ffcc00;">D STUDIO</h1>
+<header>
+    <img src="IMG_6145.jpeg" alt="D Studio Logo" class="logo-img">
+    <div style="font-weight: bold; color: #ffcc00; font-size: 24px; letter-spacing: 1px;">D STUDIO</div>
+    <div style="color: #ffcc00; font-size: 22px; cursor: pointer;" onclick="alert('Help: Select image, set target KB or Quantity, and download instantly!')">
+        <i class="fas fa-question-circle"></i>
+    </div>
+</header>
 
-    <!-- 1. PDF (Full Fit) -->
-    <div class="box">
-        <h2>1. Image to PDF (No White Borders)</h2>
+<div class="container">
+    <h1>D STUDIO PRO TOOLS</h1>
+    <p style="color: #aaa; margin-top: -10px;">The Moon Photography | Maintained by Amit Das</p>
+
+    <!-- 1. PDF Tool -->
+    <div class="tool-card">
+        <h3><i class="fas fa-file-pdf"></i> IMAGE TO PDF (FULL FIT)</h3>
         <input type="file" id="pdfIn" multiple accept="image/*">
-        <button class="btn" onclick="makePDF()">GENERATE FIT PDF</button>
+        <button class="btn-gold" onclick="makePDF()">GENERATE NO-BORDER PDF</button>
     </div>
 
-    <!-- 2. Resize by KB (New Fixed Logic) -->
-    <div class="box">
-        <h2>2. Resize Image (Set KB Size)</h2>
+    <!-- 2. KB Resize Tool -->
+    <div class="tool-card">
+        <h3><i class="fas fa-compress"></i> RESIZE BY KB SIZE</h3>
         <input type="file" id="resIn" accept="image/*">
-        <input type="number" id="kbSize" placeholder="Enter KB (e.g. 50, 100, 200)">
-        <p id="resStatus" class="status">Processing...</p>
-        <button class="btn" onclick="resKB()">RESIZE & DOWNLOAD</button>
+        <input type="number" id="kbSize" placeholder="Target KB (e.g. 50, 100)">
+        <button class="btn-gold" onclick="resKB()">RESIZE & DOWNLOAD</button>
     </div>
 
-    <!-- 3. Multi-Person Passport -->
-    <div class="box">
-        <h2>3. Multi-Person Passport Sheet</h2>
+    <!-- 3. Multi-Person Passport (A4 Layout) -->
+    <div class="tool-card">
+        <h3><i class="fas fa-users"></i> MULTI-PERSON PASSPORT (A4 SHEET)</h3>
         <div id="peopleList">
             <div class="person-entry">
-                <label>Person 1 Photo:</label>
+                <label>Upload Photo:</label>
                 <input type="file" class="p-file" accept="image/*">
                 <input type="number" class="p-qty" value="1" min="1" placeholder="Quantity">
             </div>
         </div>
-        <button class="add-btn" onclick="addPerson()">+ Add More Person</button>
+        <button class="add-more" onclick="addPerson()">+ Add Another Person</button>
         <select id="pSize">
-            <option value="p">Passport (3.5x4.5cm)</option>
-            <option value="s">Stamp (2x2.5cm)</option>
+            <option value="p">Passport Size (3.5 x 4.5 cm)</option>
+            <option value="s">Stamp Size (2 x 2.5 cm)</option>
         </select>
-        <button class="btn" onclick="makeMultiPass()">CREATE COMBINED SHEET</button>
+        <button class="btn-gold" onclick="makeA4Sheet()">CREATE A4 PRINT SHEET</button>
     </div>
+</div>
+
+<footer>
+    <div style="max-width: 600px; margin: auto; text-align: left;">
+        <h4 style="color: #ffcc00;">Disclaimer & Terms:</h4>
+        <p>1. We do not store your images. All processing is local.</p>
+        <p>2. D Studio is a free tool maintained by Amit Das for personal use.</p>
+    </div>
+    <p style="margin-top: 20px;">&copy; 2026 D Studio | Amit Das Digital</p>
+</footer>
 
 <script>
     const { jsPDF } = window.jspdf;
 
-    // Helper: Read File
-    function read(f) { return new Promise(res => { const r = new FileReader(); r.onload = e => res(e.target.result); r.readAsDataURL(f); }); }
-    // Helper: Download
-    function dl(u, n) { const a = document.createElement('a'); a.href = u; a.download = n; a.click(); }
-
-    // 1. PDF Logic (Fit to exact image size)
+    // --- PDF Logic: Perfect Fit ---
     async function makePDF() {
         const files = document.getElementById('pdfIn').files;
         if(!files.length) return alert("Select images!");
@@ -77,46 +107,32 @@
             else pdf.addPage([img.width, img.height], ori);
             pdf.addImage(data, 'JPEG', 0, 0, img.width, img.height);
         }
-        pdf.save("D-Studio-Document.pdf");
+        pdf.save("D-Studio-Fit.pdf");
     }
 
-    // 2. Resize Logic (KB Fixed)
+    // --- Resize KB Logic ---
     async function resKB() {
         const file = document.getElementById('resIn').files[0];
         const target = parseInt(document.getElementById('kbSize').value);
-        const status = document.getElementById('resStatus');
-        if(!file || !target) return alert("Select photo and target KB!");
-
-        status.style.display = "block";
+        if(!file || !target) return alert("Select photo and KB!");
         const data = await read(file);
         const img = new Image(); img.src = data;
-        
-        img.onload = async () => {
+        img.onload = () => {
             const cvs = document.createElement('canvas');
-            const ctx = cvs.getContext('2d');
             cvs.width = img.width; cvs.height = img.height;
-            ctx.drawImage(img, 0, 0);
-
-            let low = 0.1, high = 1.0, bestRes = "";
-            // Binary search for best quality
+            cvs.getContext('2d').drawImage(img, 0, 0);
+            let q = 0.9, res = "";
             for(let i=0; i<10; i++) {
-                let mid = (low + high) / 2;
-                let res = cvs.toDataURL("image/jpeg", mid);
-                let size = (res.length * 3/4) / 1024; // Approximation
-                if(size <= target) {
-                    bestRes = res;
-                    low = mid;
-                } else {
-                    high = mid;
-                }
+                let mid = q;
+                res = cvs.toDataURL("image/jpeg", mid);
+                if((res.length * 0.75 / 1024) <= target) break;
+                q -= 0.1;
             }
-            if(!bestRes) bestRes = cvs.toDataURL("image/jpeg", 0.1);
-            status.style.display = "none";
-            dl(bestRes, `resized_${target}kb.jpg`);
+            dl(res || cvs.toDataURL("image/jpeg", 0.1), `resized_${target}kb.jpg`);
         };
     }
 
-    // 3. Multi-Person Passport Logic
+    // --- Multi-Person A4 Passport Sheet ---
     function addPerson() {
         const div = document.createElement('div');
         div.className = 'person-entry';
@@ -126,47 +142,39 @@
         document.getElementById('peopleList').appendChild(div);
     }
 
-    async function makeMultiPass() {
+    async function makeA4Sheet() {
         const entries = document.querySelectorAll('.person-entry');
-        const size = document.getElementById('pSize').value;
-        let w = size === 'p' ? 413 : 236, h = size === 'p' ? 531 : 295;
-        
-        let totalQty = 0;
-        const items = [];
+        const sizeMode = document.getElementById('pSize').value;
+        const cvs = document.createElement('canvas');
+        // A4 Size at 300 DPI: 2480 x 3508 px
+        cvs.width = 2480; cvs.height = 3508;
+        const ctx = cvs.getContext('2d');
+        ctx.fillStyle = "#ffffff"; ctx.fillRect(0,0,cvs.width, cvs.height);
+
+        let w = sizeMode === 'p' ? 413 : 236; 
+        let h = sizeMode === 'p' ? 531 : 295;
+        let x = 50, y = 50;
 
         for(let entry of entries) {
             const file = entry.querySelector('.p-file').files[0];
             const qty = parseInt(entry.querySelector('.p-qty').value);
             if(file && qty > 0) {
                 const data = await read(file);
-                items.push({ data, qty });
-                totalQty += qty;
+                const img = new Image(); img.src = data;
+                await new Promise(r => img.onload = r);
+                for(let i=0; i<qty; i++) {
+                    if(x + w > cvs.width - 50) { x = 50; y += h + 40; }
+                    ctx.drawImage(img, x, y, w, h);
+                    ctx.strokeStyle = "#000"; ctx.lineWidth = 2; ctx.strokeRect(x, y, w, h);
+                    x += w + 40;
+                }
             }
         }
-
-        if(!items.length) return alert("Photo select karein!");
-
-        const cvs = document.createElement('canvas');
-        const cols = 4;
-        cvs.width = (w + 10) * cols; 
-        cvs.height = (h + 10) * Math.ceil(totalQty / cols);
-        const ctx = cvs.getContext('2d');
-        ctx.fillStyle = "#fff"; ctx.fillRect(0,0,cvs.width, cvs.height);
-
-        let count = 0;
-        for(let item of items) {
-            const img = new Image(); img.src = item.data;
-            await new Promise(r => img.onload = r);
-            for(let i=0; i < item.qty; i++) {
-                let x = (count % cols) * (w + 10);
-                let y = Math.floor(count / cols) * (h + 10);
-                ctx.drawImage(img, x+5, y+5, w, h);
-                ctx.strokeStyle = "#eee"; ctx.strokeRect(x+5, y+5, w, h);
-                count++;
-            }
-        }
-        dl(cvs.toDataURL("image/jpeg"), "d-studio-passport.jpg");
+        dl(cvs.toDataURL("image/jpeg", 0.9), "D-Studio-A4-Sheet.jpg");
     }
+
+    function read(f) { return new Promise(res => { const r = new FileReader(); r.onload = e => res(e.target.result); r.readAsDataURL(f); }); }
+    function dl(u, n) { const a = document.createElement('a'); a.href = u; a.download = n; a.click(); }
 </script>
 </body>
 </html>
