@@ -325,6 +325,38 @@
         }
         const link = document.createElement('a'); link.href = canvas.toDataURL("image/jpeg", 0.9); link.download = "D_Studio_Print.jpg"; link.click();
     }
-</script>
+</script>function generatePDF() {
+    const images = document.querySelectorAll('.preview-image'); // Aapki images ki class
+    const { jsPDF } = window.jspdf;
+    let pdf;
+
+    images.forEach((imgElement, index) => {
+        const img = new Image();
+        img.src = imgElement.src;
+
+        // Photo ki asli width aur height nikalna
+        const imgWidth = img.naturalWidth;
+        const imgHeight = img.naturalHeight;
+
+        // Agar width height se zyada hai toh 'l' (landscape), nahi toh 'p' (portrait)
+        const orientation = imgWidth > imgHeight ? 'l' : 'p';
+
+        if (index === 0) {
+            pdf = new jsPDF({
+                orientation: orientation,
+                unit: 'px',
+                format: [imgWidth, imgHeight]
+            });
+        } else {
+            pdf.addPage([imgWidth, imgHeight], orientation);
+        }
+
+        // Photo ko poore page par fit karna (0, 0 margin ke saath)
+        pdf.addImage(img, 'JPEG', 0, 0, imgWidth, imgHeight);
+    });
+
+    pdf.save("D-Studio-Generated.pdf");
+}
+
 </body>
 </html>
