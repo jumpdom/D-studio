@@ -1,77 +1,173 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>D Studio - Image Tools</title>
+<title>D Studio</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
-body { background:#0d0d0d; color:#fff; font-family:Arial; margin:0; text-align:center; }
-header { background:#1a1a1a; padding:15px; border-bottom:2px solid #ffcc00; }
+body{
+margin:0;
+font-family:Arial;
+background:#0b0b0b;
+color:#fff;
+}
 
-.brand-name { color:#ffcc00; font-size:26px; font-weight:bold; }
-.container { max-width:800px; margin:20px auto; padding:10px; }
+/* HEADER */
+.header{
+background:#111;
+padding:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:2px solid #ffcc00;
+}
 
-.tool-box { background:#1a1a1a; padding:20px; border-radius:10px; margin-bottom:20px; }
-.btn { background:#ffcc00; padding:12px; border:none; width:100%; margin-top:10px; cursor:pointer; }
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
 
-input { width:100%; padding:10px; margin-top:10px; }
+.logo img{
+width:45px;
+}
 
-.person-entry { background:#222; padding:10px; margin-top:10px; }
+.title{
+font-size:22px;
+color:#ffcc00;
+font-weight:bold;
+}
 
+.icons i{
+color:#ffcc00;
+margin-left:15px;
+font-size:18px;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:20px;
+}
+
+.hero h2{
+color:#ffcc00;
+margin-bottom:5px;
+}
+
+.hero p{
+color:#aaa;
+font-size:13px;
+}
+
+/* CARD */
+.card{
+background:#151515;
+margin:15px;
+padding:20px;
+border-radius:15px;
+border:1px solid #222;
+box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+.card h3{
+color:#ffcc00;
+margin-bottom:15px;
+}
+
+/* INPUT */
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:10px;
+border:1px solid #333;
+background:#222;
+color:#fff;
+}
+
+/* BUTTON */
+.btn{
+margin-top:15px;
+width:100%;
+padding:14px;
+border:none;
+border-radius:10px;
+font-weight:bold;
+background:linear-gradient(45deg,#ffcc00,#ff9900);
+cursor:pointer;
+}
+
+/* PERSON */
+.person{
+background:#1f1f1f;
+padding:10px;
+margin-top:10px;
+border-radius:10px;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-<img src="IMG_6239.jpeg" width="60"><br>
-<div class="brand-name">D STUDIO</div>
-<img src="IMG_6145.jpeg" width="80">
-</header>
+<!-- HEADER -->
+<div class="header">
+<div class="logo">
+<img src="IMG_6239.jpeg">
+<div class="title">D STUDIO</div>
+</div>
 
-<div class="container">
+<div class="icons">
+<i class="fas fa-home"></i>
+<i class="fas fa-question-circle"></i>
+</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+<h2>India's No. 1 Digital Photo Tools</h2>
+<p>Maintained by Amit Das | Free online tools</p>
+</div>
 
 <!-- PDF -->
-<div class="tool-box">
-<h3>Image → PDF</h3>
+<div class="card">
+<h3><i class="fas fa-file-pdf"></i> Image to PDF (No Border)</h3>
 <input type="file" id="pdfInput" multiple accept="image/*">
-<button class="btn" onclick="generatePDF()">Download PDF</button>
+<button class="btn" onclick="generatePDF()">DOWNLOAD PDF</button>
 </div>
 
-<!-- Resize -->
-<div class="tool-box">
-<h3>Resize Image (KB)</h3>
+<!-- RESIZE -->
+<div class="card">
+<h3><i class="fas fa-expand"></i> HD Resize (KB Control)</h3>
 <input type="file" id="resizeInput" accept="image/*">
-<input type="number" id="targetKB" placeholder="Enter KB (e.g. 50)">
-<button class="btn" onclick="resizeByKB()">Download Image</button>
+<input type="number" id="targetKB" placeholder="Target KB (e.g. 100)">
+<button class="btn" onclick="resizeByKB()">RESIZE & DOWNLOAD</button>
 </div>
 
-<!-- Passport -->
-<div class="tool-box">
-<h3>Passport Photo Sheet</h3>
+<!-- PASSPORT -->
+<div class="card">
+<h3><i class="fas fa-id-card"></i> Passport Sheet</h3>
 
 <div id="peopleList">
-<div class="person-entry">
+<div class="person">
 <input type="file" class="p-file">
 <input type="number" class="p-qty" value="1">
 </div>
 </div>
 
 <button class="btn" onclick="addPerson()">+ Add Person</button>
-<button class="btn" onclick="makePassport()">Generate Sheet</button>
+<button class="btn" onclick="makePassport()">GENERATE SHEET</button>
 </div>
 
-</div>
-
-<!-- JS PDF -->
+<!-- JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
 
-// READ FILE
+// FILE READ
 function readFile(file){
 return new Promise(res=>{
 const r=new FileReader();
@@ -80,7 +176,7 @@ r.readAsDataURL(file);
 });
 }
 
-// DOWNLOAD FIX (mobile supported)
+// MOBILE SAFE DOWNLOAD
 function download(url,name){
 const a=document.createElement("a");
 a.href=url;
@@ -102,7 +198,6 @@ for(let i=0;i<files.length;i++){
 const data=await readFile(files[i]);
 const img=new Image();
 img.src=data;
-
 await new Promise(r=>img.onload=r);
 
 const format = files[i].type.includes('png') ? 'PNG' : 'JPEG';
@@ -157,7 +252,7 @@ download(result,"resized.jpg");
 // ADD PERSON
 function addPerson(){
 const div=document.createElement("div");
-div.className="person-entry";
+div.className="person";
 div.innerHTML=`
 <input type="file" class="p-file">
 <input type="number" class="p-qty" value="1">
