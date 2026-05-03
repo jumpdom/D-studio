@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>D Studio - Digital Tools</title>
     
-    <!-- Social Preview -->
     <meta property="og:title" content="D Studio - India's No 1 Digital Tools">
     <meta property="og:image" content="https://dasdigital.xyz/IMG_6145.jpeg">
 
@@ -14,7 +13,7 @@
 
     <style>
         :root { --primary: #ffcc00; --bg: #0d0d0d; --card: #1a1a1a; }
-        body { background-color: var(--bg); color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; padding-bottom: 70px; overflow-x: hidden; }
+        body { background-color: var(--bg); color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; padding-bottom: 80px; overflow-x: hidden; }
 
         /* 1. SPLASH SCREEN & LOADER */
         #splash-screen {
@@ -23,10 +22,15 @@
             align-items: center; justify-content: center; z-index: 9999;
             transition: opacity 0.5s ease;
         }
+        .splash-logo {
+            width: 120px; height: 120px; border-radius: 50%;
+            border: 3px solid var(--primary); margin-bottom: 20px;
+            object-fit: cover;
+        }
         .loader {
-            width: 50px; height: 50px; border: 5px solid #333;
-            border-top: 5px solid var(--primary); border-radius: 50%;
-            animation: spin 1s linear infinite; margin-top: 20px;
+            width: 40px; height: 40px; border: 4px solid #333;
+            border-top: 4px solid var(--primary); border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
@@ -39,10 +43,9 @@
         .tool-box { background: var(--card); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; }
         .tool-box h3 { color: var(--primary); margin-top: 0; display: flex; align-items: center; gap: 10px; font-size: 18px; }
         
-        input[type="file"] { background: #262626; color: #fff; padding: 10px; border: 1px dashed var(--primary); border-radius: 8px; width: 100%; box-sizing: border-box; }
         .btn-pro { background: linear-gradient(45deg, #ffcc00, #ff9000); color: #000; border: none; padding: 15px; font-weight: bold; border-radius: 8px; width: 100%; margin-top: 15px; cursor: pointer; }
 
-        /* 4. APP-STYLE BOTTOM NAV */
+        /* 4. BOTTOM NAV */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%; height: 65px;
             background: #111; display: flex; justify-content: space-around;
@@ -54,35 +57,39 @@
 
         .section { display: none; }
         .section.active { display: block; }
+
+        /* Legal Styling */
+        .legal-text { text-align: left; font-size: 13px; color: #bbb; line-height: 1.6; }
+        .legal-text h4 { color: var(--primary); margin-bottom: 5px; }
+        .hashtags { color: #55acee; margin-top: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<!-- Splash Screen -->
+<!-- Splash Screen with Logo -->
 <div id="splash-screen">
+    <img src="IMG_6145.jpeg" alt="D Studio Logo" class="splash-logo">
     <div class="brand-name">D STUDIO</div>
-    <div style="color: #666; font-size: 14px;">India's No. 1 Tools</div>
-    <div class="loader"></div>
+    <div class="loader" style="margin-top: 20px;"></div>
 </div>
 
 <header>
     <div class="brand-name">D STUDIO</div>
 </header>
 
-<!-- Main App Content -->
 <div class="container" id="main-content">
     
-    <!-- Home Section (PDF & KB) -->
+    <!-- Home Section -->
     <div id="home" class="section active">
         <div class="tool-box">
             <h3><i class="fas fa-file-pdf"></i> Image to PDF</h3>
-            <input type="file" id="pdfInput" multiple accept="image/*">
+            <input type="file" id="pdfInput" multiple accept="image/*" style="width:100%; background:#222; color:#fff; border:1px dashed var(--primary); padding:10px; border-radius:8px;">
             <button class="btn-pro" onclick="generatePDF()">CONVERT TO PDF</button>
         </div>
 
         <div class="tool-box">
             <h3><i class="fas fa-compress-arrows-alt"></i> Image in KB</h3>
-            <input type="file" id="resizeInput" accept="image/*">
+            <input type="file" id="resizeInput" accept="image/*" style="width:100%; background:#222; color:#fff; border:1px dashed var(--primary); padding:10px; border-radius:8px;">
             <input type="number" id="targetKB" placeholder="Target KB (e.g. 50)" style="width:100%; margin-top:10px; padding:10px; border-radius:5px; border:1px solid #333; background:#222; color:#fff; box-sizing:border-box;">
             <button class="btn-pro" onclick="resizeByKB()">RESIZE IMAGE</button>
         </div>
@@ -95,7 +102,7 @@
             <div id="peopleList">
                 <div style="margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">
                     <input type="file" class="p-file" accept="image/*">
-                    <input type="number" class="p-qty" value="1" min="1" style="width:60px; margin-top:5px;"> Qty
+                    <input type="number" class="p-qty" value="1" min="1" style="width:60px; margin-top:5px; background:#222; color:#fff; border:1px solid #444;"> Qty
                 </div>
             </div>
             <button class="btn-pro" style="background:#28a745; color:#fff;" onclick="addPerson()">+ Add More</button>
@@ -103,19 +110,32 @@
         </div>
     </div>
 
-    <!-- About Section -->
+    <!-- About Section with Terms & Disclaimer -->
     <div id="about" class="section">
         <div class="tool-box" style="text-align:center;">
-            <img src="IMG_6145.jpeg" style="width:100px; border-radius:50%; border:2px solid var(--primary);">
-            <h3>About D Studio</h3>
-            <p>Created by Amit Das</p>
-            <p>Aapke kaam ko aasaan banane ke liye best digital tools.</p>
+            <img src="IMG_6145.jpeg" style="width:100px; height:100px; border-radius:50%; border:2px solid var(--primary); object-fit: cover;">
+            <h3>Amit Das</h3>
+            <p style="color:var(--primary); font-weight:bold;">Founder of D Studio</p>
+            <hr style="border:0; border-top:1px solid #333; margin:20px 0;">
+            
+            <div class="legal-text">
+                <h4>Disclaimer:</h4>
+                <p>Aapka data 100% secure hai. Koi bhi photo server par upload nahi hoti, sab aapke phone mein process hota hai.</p>
+                
+                <h4>Terms & Conditions:</h4>
+                <p>1. Yeh tool Amit Das dwara banaya gaya hai.</p>
+                <p>2. 'The Moon Photography' branding aur D Studio copyright protected hain.</p>
+                <p>3. Is tool ka galat istemal mana hai.</p>
+                
+                <div class="hashtags">
+                    #DStudio #AmitDas #ImageToPDF #PassportPhoto #DigitalTools #IndiaNo1 #PhotographyExpert
+                </div>
+            </div>
         </div>
     </div>
 
 </div>
 
-<!-- Bottom Navigation -->
 <nav class="bottom-nav">
     <div class="nav-item active" onclick="showSection('home', this)">
         <i class="fas fa-home"></i><span>Home</span>
@@ -124,7 +144,7 @@
         <i class="fas fa-camera"></i><span>Passport</span>
     </div>
     <div class="nav-item" onclick="showSection('about', this)">
-        <i class="fas fa-user"></i><span>About</span>
+        <i class="fas fa-info-circle"></i><span>About</span>
     </div>
 </nav>
 
@@ -137,10 +157,9 @@
                 document.getElementById('splash-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
             }, 500);
-        }, 2000); // 2 seconds splash
+        }, 2500);
     };
 
-    // Tab switching logic
     function showSection(sectionId, element) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -149,7 +168,7 @@
         window.scrollTo(0,0);
     }
 
-    // Tools Functionality (Pehele wale code se li gayi hai)
+    // Tools Functionality
     function readFile(file) { return new Promise(res => { const r = new FileReader(); r.onload = e => res(e.target.result); r.readAsDataURL(file); }); }
     function download(url, name) { const a = document.createElement('a'); a.href = url; a.download = name; a.click(); }
 
@@ -183,14 +202,14 @@
             let q = 0.9;
             let res = canvas.toDataURL("image/jpeg", q);
             while ((res.length / 1024) > target && q > 0.1) { q -= 0.05; res = canvas.toDataURL("image/jpeg", q); }
-            download(res, "Resized.jpg");
+            download(res, "D_Studio_Resized.jpg");
         };
     }
 
     function addPerson() {
         const div = document.createElement('div');
         div.style = "margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;";
-        div.innerHTML = `<input type="file" class="p-file" accept="image/*"><input type="number" class="p-qty" value="1" min="1" style="width:60px; margin-top:5px;"> Qty`;
+        div.innerHTML = `<input type="file" class="p-file" accept="image/*"><input type="number" class="p-qty" value="1" min="1" style="width:60px; margin-top:5px; background:#222; color:#fff; border:1px solid #444;"> Qty`;
         document.getElementById('peopleList').appendChild(div);
     }
 
@@ -215,9 +234,8 @@
                 }
             }
         }
-        download(canvas.toDataURL("image/jpeg", 0.9), "Passport_Sheet.jpg");
+        download(canvas.toDataURL("image/jpeg", 0.9), "Passport_Sheet_DStudio.jpg");
     }
 </script>
-
 </body>
 </html>
