@@ -3,238 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>D Studio - Digital Tools</title>
+    <title>D Studio - Pro Digital Tools</title>
     
-    <meta property="og:title" content="D Studio - India's No 1 Digital Tools">
-    <meta property="og:image" content="https://dasdigital.xyz/IMG_6145.jpeg">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root { --primary: #ffcc00; --bg: #0d0d0d; --card: #1a1a1a; }
-        body { background-color: var(--bg); color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; padding-bottom: 80px; overflow-x: hidden; }
-
-        /* 1. SPLASH SCREEN & LOADER */
-        #splash-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg); display: flex; flex-direction: column;
-            align-items: center; justify-content: center; z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-        .splash-logo {
-            width: 120px; height: 120px; border-radius: 50%;
-            border: 3px solid var(--primary); margin-bottom: 20px;
-            object-fit: cover;
-        }
-        .loader {
-            width: 40px; height: 40px; border: 4px solid #333;
-            border-top: 4px solid var(--primary); border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* 2. HEADER */
-        header { background: var(--card); padding: 15px; border-bottom: 2px solid var(--primary); text-align: center; }
+        body { background-color: var(--bg); color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; padding-bottom: 80px; }
+        
+        #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s; }
+        .splash-logo { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; }
+        
+        header { background: var(--card); padding: 15px; border-bottom: 2px solid var(--primary); text-align: center; position: sticky; top: 0; z-index: 100; }
         .brand-name { color: var(--primary); font-size: 24px; font-weight: bold; letter-spacing: 2px; }
 
-        /* 3. CONTENT AREA */
         .container { max-width: 600px; margin: 20px auto; padding: 0 15px; display: none; }
         .tool-box { background: var(--card); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; }
         .tool-box h3 { color: var(--primary); margin-top: 0; display: flex; align-items: center; gap: 10px; font-size: 18px; }
         
-        .btn-pro { background: linear-gradient(45deg, #ffcc00, #ff9000); color: #000; border: none; padding: 15px; font-weight: bold; border-radius: 8px; width: 100%; margin-top: 15px; cursor: pointer; }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; font-size: 12px; color: #888; margin-bottom: 5px; }
+        input[type="file"], input[type="number"], select { width: 100%; background: #222; color: #fff; border: 1px solid #444; padding: 12px; border-radius: 8px; box-sizing: border-box; }
+        
+        .btn-pro { background: linear-gradient(45deg, #ffcc00, #ff9000); color: #000; border: none; padding: 15px; font-weight: bold; border-radius: 8px; width: 100%; margin-top: 10px; cursor: pointer; transition: 0.3s; }
+        .btn-pro:active { transform: scale(0.95); }
 
-        /* 4. BOTTOM NAV */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 65px;
-            background: #111; display: flex; justify-content: space-around;
-            align-items: center; border-top: 1px solid #333; z-index: 1000;
-        }
-        .nav-item { color: #888; text-decoration: none; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; transition: 0.3s; cursor: pointer; }
-        .nav-item i { font-size: 20px; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 65px; background: #111; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #333; z-index: 1000; }
+        .nav-item { color: #888; text-decoration: none; font-size: 11px; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        .nav-item i { font-size: 20px; margin-bottom: 3px; }
         .nav-item.active { color: var(--primary); }
 
         .section { display: none; }
         .section.active { display: block; }
-
-        /* Legal Styling */
-        .legal-text { text-align: left; font-size: 13px; color: #bbb; line-height: 1.6; }
-        .legal-text h4 { color: var(--primary); margin-bottom: 5px; }
-        .hashtags { color: #55acee; margin-top: 15px; font-weight: bold; }
+        .badge { background: var(--primary); color: #000; font-size: 10px; padding: 2px 6px; border-radius: 10px; margin-left: 5px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<!-- Splash Screen with Logo -->
 <div id="splash-screen">
-    <img src="IMG_6145.jpeg" alt="D Studio Logo" class="splash-logo">
-    <div class="brand-name">D STUDIO</div>
-    <div class="loader" style="margin-top: 20px;"></div>
+    <img src="IMG_6145.jpeg" alt="Logo" class="splash-logo">
+    <div class="brand-name" style="margin-top:15px;">D STUDIO</div>
+    <div style="width:30px; height:30px; border:3px solid #333; border-top-color:var(--primary); border-radius:50%; animation:spin 1s linear infinite; margin-top:20px;"></div>
 </div>
 
-<header>
-    <div class="brand-name">D STUDIO</div>
-</header>
+<header><div class="brand-name">D STUDIO</div></header>
 
 <div class="container" id="main-content">
     
-    <!-- Home Section -->
+    <!-- HOME: RESIZE & PDF -->
     <div id="home" class="section active">
         <div class="tool-box">
+            <h3><i class="fas fa-compress-arrows-alt"></i> Perfect Resize (KB)</h3>
+            <div class="input-group">
+                <label>Photo Select Karein:</label>
+                <input type="file" id="resizeInput" accept="image/*">
+            </div>
+            <div class="input-group">
+                <label>Kitne KB chahiye? (Target):</label>
+                <input type="number" id="targetKB" placeholder="Example: 50">
+            </div>
+            <button class="btn-pro" onclick="perfectResize()">DOWNLOAD PERFECT SIZE</button>
+        </div>
+
+        <div class="tool-box">
             <h3><i class="fas fa-file-pdf"></i> Image to PDF</h3>
-            <input type="file" id="pdfInput" multiple accept="image/*" style="width:100%; background:#222; color:#fff; border:1px dashed var(--primary); padding:10px; border-radius:8px;">
+            <input type="file" id="pdfInput" multiple accept="image/*">
             <button class="btn-pro" onclick="generatePDF()">CONVERT TO PDF</button>
         </div>
-
-        <div class="tool-box">
-            <h3><i class="fas fa-compress-arrows-alt"></i> Image in KB</h3>
-            <input type="file" id="resizeInput" accept="image/*" style="width:100%; background:#222; color:#fff; border:1px dashed var(--primary); padding:10px; border-radius:8px;">
-            <input type="number" id="targetKB" placeholder="Target KB (e.g. 50)" style="width:100%; margin-top:10px; padding:10px; border-radius:5px; border:1px solid #333; background:#222; color:#fff; box-sizing:border-box;">
-            <button class="btn-pro" onclick="resizeByKB()">RESIZE IMAGE</button>
-        </div>
     </div>
 
-    <!-- Passport Section -->
+    <!-- PASSPORT & ID CARD -->
     <div id="passport" class="section">
         <div class="tool-box">
-            <h3><i class="fas fa-id-card"></i> Passport Photo Maker</h3>
-            <div id="peopleList">
-                <div style="margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">
-                    <input type="file" class="p-file" accept="image/*">
-                    <input type="number" class="p-qty" value="1" min="1" style="width:60px; margin-top:5px; background:#222; color:#fff; border:1px solid #444;"> Qty
+            <h3><i class="fas fa-id-card"></i> Print Mode <span class="badge">NEW</span></h3>
+            <div class="input-group">
+                <label>Kya print karna hai?</label>
+                <select id="printMode" onchange="togglePassportMode()">
+                    <option value="passport">Passport Photos (Multiple)</option>
+                    <option value="aadhar">Aadhar / ID Card (Front & Back)</option>
+                </select>
+            </div>
+
+            <!-- Mode 1: Passport -->
+            <div id="mode-passport">
+                <div id="peopleList">
+                    <div style="border-bottom:1px solid #333; padding-bottom:10px; margin-bottom:10px;">
+                        <input type="file" class="p-file" accept="image/*">
+                        <input type="number" class="p-qty" value="1" style="width:70px; margin-top:5px;"> Qty
+                    </div>
+                </div>
+                <button class="btn-pro" style="background:#444; color:#fff;" onclick="addPerson()">+ Add Another Person</button>
+            </div>
+
+            <!-- Mode 2: Aadhar -->
+            <div id="mode-aadhar" style="display:none;">
+                <div class="input-group">
+                    <label>Aadhar Front (Aage ka part):</label>
+                    <input type="file" id="aadharFront" accept="image/*">
+                </div>
+                <div class="input-group">
+                    <label>Aadhar Back (Peeche ka part):</label>
+                    <input type="file" id="aadharBack" accept="image/*">
                 </div>
             </div>
-            <button class="btn-pro" style="background:#28a745; color:#fff;" onclick="addPerson()">+ Add More</button>
-            <button class="btn-pro" onclick="makePassportSheet()">GENERATE A4 SHEET</button>
+
+            <button class="btn-pro" onclick="generatePrintSheet()">GENERATE A4 PRINT SHEET</button>
         </div>
     </div>
 
-    <!-- About Section with Terms & Disclaimer -->
+    <!-- ABOUT -->
     <div id="about" class="section">
         <div class="tool-box" style="text-align:center;">
-            <img src="IMG_6145.jpeg" style="width:100px; height:100px; border-radius:50%; border:2px solid var(--primary); object-fit: cover;">
+            <img src="IMG_6145.jpeg" style="width:80px; height:80px; border-radius:50%; border:2px solid var(--primary); object-fit:cover;">
             <h3>Amit Das</h3>
-            <p style="color:var(--primary); font-weight:bold;">Founder of D Studio</p>
-            <hr style="border:0; border-top:1px solid #333; margin:20px 0;">
-            
-            <div class="legal-text">
-                <h4>Disclaimer:</h4>
-                <p>Aapka data 100% secure hai. Koi bhi photo server par upload nahi hoti, sab aapke phone mein process hota hai.</p>
-                
-                <h4>Terms & Conditions:</h4>
-                <p>1. Yeh tool Amit Das dwara banaya gaya hai.</p>
-                <p>2. 'The Moon Photography' branding aur D Studio copyright protected hain.</p>
-                <p>3. Is tool ka galat istemal mana hai.</p>
-                
-                <div class="hashtags">
-                    #DStudio #AmitDas #ImageToPDF #PassportPhoto #DigitalTools #IndiaNo1 #PhotographyExpert
-                </div>
+            <p style="font-size:13px; color:#bbb;">Expert Photography & Digital Solutions</p>
+            <div style="text-align:left; font-size:12px; border-top:1px solid #333; padding-top:15px;">
+                <p><b>Disclaimer:</b> Data aapke device mein hi rehta hai.</p>
+                <p><b>Terms:</b> Tool ka istemal sirf personal kaam ke liye karein.</p>
+                <p style="color:var(--primary);">#DStudio #AadharPrint #ImageToPDF #AmitDas</p>
             </div>
         </div>
     </div>
-
 </div>
 
 <nav class="bottom-nav">
-    <div class="nav-item active" onclick="showSection('home', this)">
-        <i class="fas fa-home"></i><span>Home</span>
-    </div>
-    <div class="nav-item" onclick="showSection('passport', this)">
-        <i class="fas fa-camera"></i><span>Passport</span>
-    </div>
-    <div class="nav-item" onclick="showSection('about', this)">
-        <i class="fas fa-info-circle"></i><span>About</span>
-    </div>
+    <div class="nav-item active" onclick="showSection('home', this)"><i class="fas fa-home"></i><span>Home</span></div>
+    <div class="nav-item" onclick="showSection('passport', this)"><i class="fas fa-print"></i><span>Print</span></div>
+    <div class="nav-item" onclick="showSection('about', this)"><i class="fas fa-user"></i><span>About</span></div>
 </nav>
 
 <script>
-    // Splash screen logic
-    window.onload = () => {
-        setTimeout(() => {
-            document.getElementById('splash-screen').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('splash-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-            }, 500);
-        }, 2500);
-    };
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    function showSection(sectionId, element) {
+    window.onload = () => { setTimeout(() => { 
+        document.getElementById('splash-screen').style.opacity = '0';
+        setTimeout(() => { 
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }, 500);
+    }, 2000); };
+
+    function showSection(id, el) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        document.getElementById(sectionId).classList.add('active');
-        element.classList.add('active');
-        window.scrollTo(0,0);
+        document.getElementById(id).classList.add('active');
+        el.classList.add('active');
     }
 
-    // Tools Functionality
+    function togglePassportMode() {
+        const mode = document.getElementById('printMode').value;
+        document.getElementById('mode-passport').style.display = mode === 'passport' ? 'block' : 'none';
+        document.getElementById('mode-aadhar').style.display = mode === 'aadhar' ? 'block' : 'none';
+    }
+
     function readFile(file) { return new Promise(res => { const r = new FileReader(); r.onload = e => res(e.target.result); r.readAsDataURL(file); }); }
-    function download(url, name) { const a = document.createElement('a'); a.href = url; a.download = name; a.click(); }
 
-    async function generatePDF() {
-        const files = document.getElementById('pdfInput').files;
-        if (files.length === 0) return alert("Select photos!");
-        const { jsPDF } = window.jspdf;
-        let pdf;
-        for (let i = 0; i < files.length; i++) {
-            const data = await readFile(files[i]);
-            const img = new Image(); img.src = data;
-            await new Promise(r => img.onload = r);
-            if (i === 0) pdf = new jsPDF({ unit: 'px', format: [img.width, img.height] });
-            else pdf.addPage([img.width, img.height]);
-            pdf.addImage(data, 'JPEG', 0, 0, img.width, img.height);
-        }
-        pdf.save("D-Studio.pdf");
-    }
-
-    async function resizeByKB() {
+    // IMPROVED RESIZE LOGIC
+    async function perfectResize() {
         const file = document.getElementById('resizeInput').files[0];
-        const target = document.getElementById('targetKB').value;
-        if (!file || !target) return alert("Details fill karein!");
-        const data = await readFile(file);
-        const img = new Image(); img.src = data;
+        const targetKB = document.getElementById('targetKB').value;
+        if(!file || !targetKB) return alert("File aur size bhariye!");
+        
+        let data = await readFile(file);
+        let img = new Image(); img.src = data;
         img.onload = () => {
             const canvas = document.createElement('canvas');
-            canvas.width = img.width; canvas.height = img.height;
             const ctx = canvas.getContext('2d');
+            canvas.width = img.width; canvas.height = img.height;
             ctx.drawImage(img, 0, 0);
-            let q = 0.9;
-            let res = canvas.toDataURL("image/jpeg", q);
-            while ((res.length / 1024) > target && q > 0.1) { q -= 0.05; res = canvas.toDataURL("image/jpeg", q); }
-            download(res, "D_Studio_Resized.jpg");
+            
+            let low = 0.1, high = 1.0, bestRes = "";
+            for(let i=0; i<10; i++) { // Binary search for quality
+                let mid = (low + high) / 2;
+                bestRes = canvas.toDataURL("image/jpeg", mid);
+                if((bestRes.length / 1024) > targetKB) high = mid;
+                else low = mid;
+            }
+            const a = document.createElement('a'); a.href = bestRes; a.download = `D_Studio_${targetKB}KB.jpg`; a.click();
         };
+    }
+
+    // PRINT SHEET LOGIC (Passport + Aadhar)
+    async function generatePrintSheet() {
+        const mode = document.getElementById('printMode').value;
+        const canvas = document.createElement('canvas');
+        canvas.width = 2480; canvas.height = 3508; // A4 @ 300DPI
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = "#fff"; ctx.fillRect(0,0,2480,3508);
+
+        if(mode === 'passport') {
+            const files = document.querySelectorAll('.p-file'), qtys = document.querySelectorAll('.p-qty');
+            let x = 100, y = 100;
+            for(let i=0; i<files.length; i++) {
+                if(files[i].files[0]) {
+                    const img = new Image(); img.src = await readFile(files[i].files[0]);
+                    await new Promise(r => img.onload = r);
+                    for(let j=0; j<qtys[i].value; j++) {
+                        if(x + 413 > 2400) { x = 100; y += 580; }
+                        ctx.drawImage(img, x, y, 413, 531);
+                        ctx.strokeStyle = "#ccc"; ctx.strokeRect(x,y,413,531);
+                        x += 463;
+                    }
+                }
+            }
+        } else {
+            // Aadhar Card Mode (Standard ID Size: 3.375 x 2.125 inches)
+            const f = document.getElementById('aadharFront').files[0];
+            const b = document.getElementById('aadharBack').files[0];
+            if(!f || !b) return alert("Aadhar Front aur Back dono upload karein!");
+            
+            const imgF = new Image(); imgF.src = await readFile(f);
+            const imgB = new Image(); imgB.src = await readFile(b);
+            await Promise.all([new Promise(r => imgF.onload = r), new Promise(r => imgB.onload = r)]);
+            
+            const idW = 1012, idH = 638; // Real ID Size in pixels
+            ctx.drawImage(imgF, 100, 100, idW, idH); ctx.strokeRect(100, 100, idW, idH);
+            ctx.drawImage(imgB, 100, 100 + idH + 50, idW, idH); ctx.strokeRect(100, 100 + idH + 50, idW, idH);
+        }
+        
+        const link = document.createElement('a'); link.href = canvas.toDataURL("image/jpeg", 0.9);
+        link.download = "D_Studio_Print_A4.jpg"; link.click();
     }
 
     function addPerson() {
         const div = document.createElement('div');
-        div.style = "margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;";
-        div.innerHTML = `<input type="file" class="p-file" accept="image/*"><input type="number" class="p-qty" value="1" min="1" style="width:60px; margin-top:5px; background:#222; color:#fff; border:1px solid #444;"> Qty`;
+        div.style = "border-bottom:1px solid #333; padding-bottom:10px; margin-bottom:10px;";
+        div.innerHTML = `<input type="file" class="p-file" accept="image/*"><input type="number" class="p-qty" value="1" style="width:70px; margin-top:5px;"> Qty`;
         document.getElementById('peopleList').appendChild(div);
-    }
-
-    async function makePassportSheet() {
-        const files = document.querySelectorAll('.p-file');
-        const qtys = document.querySelectorAll('.p-qty');
-        const canvas = document.createElement('canvas');
-        canvas.width = 2480; canvas.height = 3508;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = "#ffffff"; ctx.fillRect(0,0,2480, 3508);
-        let x = 80, y = 100;
-        for (let i = 0; i < files.length; i++) {
-            if(files[i].files[0]) {
-                const data = await readFile(files[i].files[0]);
-                const img = new Image(); img.src = data;
-                await new Promise(r => img.onload = r);
-                for(let j=0; j<qtys[i].value; j++) {
-                    if (x + 413 > 2400) { x = 80; y += 591; }
-                    ctx.drawImage(img, x, y, 413, 531);
-                    ctx.strokeRect(x, y, 413, 531);
-                    x += 463;
-                }
-            }
-        }
-        download(canvas.toDataURL("image/jpeg", 0.9), "Passport_Sheet_DStudio.jpg");
     }
 </script>
 </body>
