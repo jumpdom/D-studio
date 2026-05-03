@@ -1,0 +1,20 @@
+{
+  "short_name": "D STUDIO",
+  "name": "D Studio - Digital Tools",
+  "icons": [
+    {
+      "src": "IMG_6145.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "IMG_6145.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#0d0d0d",
+  "display": "standalone",
+  "theme_color": "#ffcc00"
+}
