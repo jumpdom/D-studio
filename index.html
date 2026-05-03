@@ -1,300 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>D Studio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>D Studio - Image to PDF & Passport Specialist</title>
+    
+    <!-- SOCIAL MEDIA PREVIEW SETTINGS (Isse link par photo dikhegi) -->
+    <meta property="og:title" content="D Studio - India's No 1 Digital Tools">
+    <meta property="og:description" content="Convert Image to PDF, Resize to KB, and Passport Photo Maker. 100% Free and Secure.">
+    <meta property="og:image" content="https://dasdigital.xyz/IMG_6145.jpeg">
+    <meta property="og:url" content="https://dasdigital.xyz">
+    <meta property="og:type" content="website">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Twitter Preview -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://dasdigital.xyz/IMG_6145.jpeg">
 
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:#0b0b0b;
-color:#fff;
-}
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>D</text></svg>">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-/* HEADER */
-.header{
-background:#111;
-padding:15px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-border-bottom:2px solid #ffcc00;
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.logo img{
-width:45px;
-}
-
-.title{
-font-size:22px;
-color:#ffcc00;
-font-weight:bold;
-}
-
-.icons i{
-color:#ffcc00;
-margin-left:15px;
-font-size:18px;
-}
-
-/* HERO */
-.hero{
-text-align:center;
-padding:20px;
-}
-
-.hero h2{
-color:#ffcc00;
-margin-bottom:5px;
-}
-
-.hero p{
-color:#aaa;
-font-size:13px;
-}
-
-/* CARD */
-.card{
-background:#151515;
-margin:15px;
-padding:20px;
-border-radius:15px;
-border:1px solid #222;
-box-shadow:0 0 10px rgba(0,0,0,0.5);
-}
-
-.card h3{
-color:#ffcc00;
-margin-bottom:15px;
-}
-
-/* INPUT */
-input{
-width:100%;
-padding:12px;
-margin-top:10px;
-border-radius:10px;
-border:1px solid #333;
-background:#222;
-color:#fff;
-}
-
-/* BUTTON */
-.btn{
-margin-top:15px;
-width:100%;
-padding:14px;
-border:none;
-border-radius:10px;
-font-weight:bold;
-background:linear-gradient(45deg,#ffcc00,#ff9900);
-cursor:pointer;
-}
-
-/* PERSON */
-.person{
-background:#1f1f1f;
-padding:10px;
-margin-top:10px;
-border-radius:10px;
-}
-</style>
+    <style>
+        body { background-color: #0d0d0d; color: #e0e0e0; font-family: 'Arial', sans-serif; text-align: center; margin: 0; padding: 0; }
+        header { background: #1a1a1a; padding: 15px; border-bottom: 2px solid #ffcc00; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .brand-name { color: #ffcc00; font-size: 26px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+        .india-no1 { color: #ffffff; font-size: 14px; font-weight: bold; background: linear-gradient(90deg, #ffcc00, #ff9000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
+        .container { max-width: 800px; margin: 20px auto; padding: 10px; }
+        h1 { color: #ffcc00; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px; }
+        .tool-box { background: #1a1a1a; padding: 25px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #333; text-align: left; }
+        .tool-box h3 { color: #ffcc00; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        input[type="file"] { background: #262626; color: #fff; padding: 10px; border: 1px dashed #ffcc00; border-radius: 5px; width: 100%; cursor: pointer; }
+        .btn-pro { background: linear-gradient(45deg, #ffcc00, #ff9000); color: #000; border: none; padding: 15px 25px; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 15px; width: 100%; font-size: 16px; transition: 0.3s; }
+        .btn-pro:hover { opacity: 0.9; transform: scale(0.98); }
+        .person-entry { background: #222; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #ffcc00; position: relative; }
+        .add-more-btn { background: #28a745; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; font-weight: bold; }
+        .footer-legal { background: #111; padding: 30px; margin-top: 40px; border-top: 1px solid #333; font-size: 13px; color: #888; text-align: left; }
+        .footer-legal h4 { color: #ffcc00; margin-top: 0; margin-bottom: 10px; }
+        .footer-legal p { margin: 5px 0; }
+        .num-input { background: #333; color: #fff; border: 1px solid #444; border-radius: 4px; padding: 8px; width: 100px; font-size: 14px; margin-left: 10px;}
+    </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<div class="header">
-<div class="logo">
-<img src="IMG_6239.jpeg">
-<div class="title">D STUDIO</div>
+<header>
+    <div class="brand-name">D STUDIO</div>
+    <div class="india-no1">India’s No 1 multiple tools</div>
+    <div style="font-size:12px; color:#666;">online free</div>
+</header>
+
+<div class="container">
+    <h1>All-in-One Digital Studio Utility</h1>
+
+    <div class="tool-box">
+        <h3><i class="fas fa-file-pdf"></i> Convert Image to PDF</h3>
+        <input type="file" id="pdfInput" multiple accept="image/*">
+        <button class="btn-pro" onclick="generatePDF()">DOWNLOAD PDF</button>
+    </div>
+
+    <div class="tool-box">
+        <h3><i class="fas fa-arrows-alt-h"></i> Image in KB (Resize)</h3>
+        <input type="file" id="resizeInput" accept="image/*">
+        <div style="margin-top:10px; display:flex; align-items:center;">
+            <label>Set Target KB Size:</label>
+            <input type="number" id="targetKB" class="num-input" placeholder="e.g. 50">
+        </div>
+        <button class="btn-pro" onclick="resizeByKB()">DOWNLOAD RESIZED IMAGE</button>
+    </div>
+
+    <div class="tool-box">
+        <h3><i class="fas fa-id-card"></i> Passport Size Photo Converter</h3>
+        <div id="peopleList">
+            <div class="person-entry">
+                <label>Person 1 Photo:</label>
+                <input type="file" class="p-file" accept="image/*" style="margin-top:5px;">
+                <div style="margin-top:10px; display:flex; align-items:center;">
+                    <label>Quantity:</label>
+                    <input type="number" class="p-qty" value="1" min="1" class="num-input" style="width:70px; margin-left:10px;">
+                </div>
+            </div>
+        </div>
+        <button class="add-more-btn" onclick="addPerson()">+ Add Another Person</button>
+        <button class="btn-pro" onclick="makePassportSheet()">GENERATE PASSPORT A4 SHEET</button>
+    </div>
 </div>
 
-<div class="icons">
-<i class="fas fa-home"></i>
-<i class="fas fa-question-circle"></i>
-</div>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-<h2>India's No. 1 Digital Photo Tools</h2>
-<p>Maintained by Amit Das | Free online tools</p>
-</div>
-
-<!-- PDF -->
-<div class="card">
-<h3><i class="fas fa-file-pdf"></i> Image to PDF (No Border)</h3>
-<input type="file" id="pdfInput" multiple accept="image/*">
-<button class="btn" onclick="generatePDF()">DOWNLOAD PDF</button>
-</div>
-
-<!-- RESIZE -->
-<div class="card">
-<h3><i class="fas fa-expand"></i> HD Resize (KB Control)</h3>
-<input type="file" id="resizeInput" accept="image/*">
-<input type="number" id="targetKB" placeholder="Target KB (e.g. 100)">
-<button class="btn" onclick="resizeByKB()">RESIZE & DOWNLOAD</button>
-</div>
-
-<!-- PASSPORT -->
-<div class="card">
-<h3><i class="fas fa-id-card"></i> Passport Sheet</h3>
-
-<div id="peopleList">
-<div class="person">
-<input type="file" class="p-file">
-<input type="number" class="p-qty" value="1">
-</div>
-</div>
-
-<button class="btn" onclick="addPerson()">+ Add Person</button>
-<button class="btn" onclick="makePassport()">GENERATE SHEET</button>
-</div>
-
-<!-- JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<footer class="footer-legal">
+    <h4>Disclaimer:</h4>
+    <p>आपका डेटा सुरक्षित है। कोई भी इमेज सर्वर पर अपलोड नहीं होती।</p>
+    <h4>Terms & Conditions:</h4>
+    <p>1. यह टूल Amit Das द्वारा बनाया गया है।<br>2. 'The Moon Photography' ब्रांडिंग सुरक्षित है।</p>
+    <p style="text-align:center; margin-top:20px; color:#333;">&copy; 2026 D Studio | Amit Das</p>
+</footer>
 
 <script>
+    function readFile(file) { return new Promise(res => { const r = new FileReader(); r.onload = e => res(e.target.result); r.readAsDataURL(file); }); }
+    function download(url, name) { const a = document.createElement('a'); a.href = url; a.download = name; a.click(); }
 
-// FILE READ
-function readFile(file){
-return new Promise(res=>{
-const r=new FileReader();
-r.onload=e=>res(e.target.result);
-r.readAsDataURL(file);
-});
-}
+    async function generatePDF() {
+        const files = document.getElementById('pdfInput').files;
+        if (files.length === 0) return alert("Photo select karein!");
+        const { jsPDF } = window.jspdf;
+        let pdf;
+        for (let i = 0; i < files.length; i++) {
+            const data = await readFile(files[i]);
+            const img = new Image(); img.src = data;
+            await new Promise(r => img.onload = r);
+            const ori = img.width > img.height ? 'l' : 'p';
+            if (i === 0) pdf = new jsPDF({ orientation: ori, unit: 'px', format: [img.width, img.height] });
+            else pdf.addPage([img.width, img.height], ori);
+            pdf.addImage(data, 'JPEG', 0, 0, img.width, img.height);
+        }
+        pdf.save("D-Studio-Doc.pdf");
+    }
 
-// MOBILE SAFE DOWNLOAD
-function download(url,name){
-const a=document.createElement("a");
-a.href=url;
-a.download=name;
-document.body.appendChild(a);
-a.click();
-document.body.removeChild(a);
-}
+    async function resizeByKB() {
+        const file = document.getElementById('resizeInput').files[0];
+        const targetKB = document.getElementById('targetKB').value;
+        if (!file || !targetKB) return alert("File aur size bhariye!");
+        const data = await readFile(file);
+        const img = new Image(); img.src = data;
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.width; canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            let q = 0.9;
+            let result = canvas.toDataURL("image/jpeg", q);
+            while ((result.length / 1024) > targetKB && q > 0.1) {
+                q -= 0.05;
+                result = canvas.toDataURL("image/jpeg", q);
+            }
+            download(result, `D_Studio_${targetKB}KB.jpg`);
+        };
+    }
 
-// PDF
-async function generatePDF(){
-const files=document.getElementById("pdfInput").files;
-if(files.length===0) return alert("Select images");
+    function addPerson() {
+        const div = document.createElement('div');
+        div.className = 'person-entry';
+        div.innerHTML = `<label>Next Person:</label><input type="file" class="p-file" accept="image/*"><input type="number" class="p-qty" value="1" min="1" class="num-input">`;
+        document.getElementById('peopleList').appendChild(div);
+    }
 
-const {jsPDF}=window.jspdf;
-let pdf;
-
-for(let i=0;i<files.length;i++){
-const data=await readFile(files[i]);
-const img=new Image();
-img.src=data;
-await new Promise(r=>img.onload=r);
-
-const format = files[i].type.includes('png') ? 'PNG' : 'JPEG';
-
-if(i===0){
-pdf=new jsPDF({
-orientation: img.width>img.height?'l':'p',
-unit:'px',
-format:[img.width,img.height]
-});
-}else{
-pdf.addPage([img.width,img.height]);
-}
-
-pdf.addImage(data,format,0,0,img.width,img.height);
-}
-
-pdf.save("D-Studio.pdf");
-}
-
-// RESIZE
-async function resizeByKB(){
-const file=document.getElementById("resizeInput").files[0];
-const targetKB=document.getElementById("targetKB").value;
-
-if(!file || !targetKB) return alert("Fill all fields");
-
-const data=await readFile(file);
-const img=new Image();
-img.src=data;
-
-img.onload=()=>{
-const canvas=document.createElement("canvas");
-const ctx=canvas.getContext("2d");
-
-canvas.width=img.width;
-canvas.height=img.height;
-ctx.drawImage(img,0,0);
-
-let quality=0.9;
-let result;
-
-do{
-result=canvas.toDataURL("image/jpeg",quality);
-quality-=0.05;
-}while((result.length/1024)>targetKB && quality>0.1);
-
-download(result,"resized.jpg");
-};
-}
-
-// ADD PERSON
-function addPerson(){
-const div=document.createElement("div");
-div.className="person";
-div.innerHTML=`
-<input type="file" class="p-file">
-<input type="number" class="p-qty" value="1">
-`;
-document.getElementById("peopleList").appendChild(div);
-}
-
-// PASSPORT
-async function makePassport(){
-const files=document.querySelectorAll(".p-file");
-const qtys=document.querySelectorAll(".p-qty");
-
-const canvas=document.createElement("canvas");
-canvas.width=2480;
-canvas.height=3508;
-
-const ctx=canvas.getContext("2d");
-ctx.fillStyle="#fff";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-let x=80, y=100;
-const w=413, h=531;
-
-for(let i=0;i<files.length;i++){
-if(files[i].files[0]){
-const data=await readFile(files[i].files[0]);
-const img=new Image();
-img.src=data;
-await new Promise(r=>img.onload=r);
-
-for(let j=0;j<qtys[i].value;j++){
-if(x+w>2400){ x=80; y+=h+50; }
-ctx.drawImage(img,x,y,w,h);
-x+=w+40;
-}
-}
-}
-
-download(canvas.toDataURL("image/jpeg",0.95),"passport.jpg");
-}
-
+    async function makePassportSheet() {
+        const files = document.querySelectorAll('.p-file');
+        const qtys = document.querySelectorAll('.p-qty');
+        const canvas = document.createElement('canvas');
+        canvas.width = 2480; canvas.height = 3508;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = "#ffffff"; ctx.fillRect(0,0,canvas.width, canvas.height);
+        const pW = 413; const pH = 531;
+        let x = 80; let y = 100;
+        for (let i = 0; i < files.length; i++) {
+            if(files[i].files[0]) {
+                const data = await readFile(files[i].files[0]);
+                const img = new Image(); img.src = data;
+                await new Promise(r => img.onload = r);
+                const q = parseInt(qtys[i].value);
+                for(let j=0; j<q; j++) {
+                    if (x + pW > 2400) { x = 80; y += pH + 60; }
+                    ctx.drawImage(img, x, y, pW, pH);
+                    ctx.strokeStyle = "#000"; ctx.strokeRect(x, y, pW, pH);
+                    x += pW + 50;
+                }
+            }
+        }
+        download(canvas.toDataURL("image/jpeg", 0.95), "Passport-Sheet-A4.jpg");
+    }
 </script>
-
 </body>
 </html>
